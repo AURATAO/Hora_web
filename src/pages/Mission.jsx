@@ -1,8 +1,8 @@
 export default function Mission() {
   return (
     <div>
-      <h1 className="bg-primary text-accent" >Mission Page</h1>
-      <p>Details about our mission.</p>
+      <h1 className="bg-primary text-accent font-heading" >Mission Page</h1>
+      <p className="font-sans">Details about our mission.</p>
     </div>
   );
 }
