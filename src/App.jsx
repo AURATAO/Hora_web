@@ -1,12 +1,19 @@
-import { Camera } from "lucide-react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import Mission from "./pages/Mission";
 
 function App() {
   return (
     <>
-      <div className="text-3xl font-bold underline text-red-50">
-        Hello Tailwind + React + Vite!
-      </div>
-      <Camera color="red" size={48} />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/mission" element={<Mission />} />
+          {/* Add more routes as needed */}
+          {/* Example: <Route path="/about" element={<About />} /> */}
+        </Routes>
+      </BrowserRouter>
+    
     </>
   );
 }
