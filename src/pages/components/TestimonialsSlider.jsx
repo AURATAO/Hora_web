@@ -71,7 +71,7 @@ export default function TestimonialsSlider() {
             </div>
             <p className="text-2xl md:text-3xl font-serif text-accent mb-6">
               I’d just gotten out of a long relationship and needed someone to talk to. Ended up chatting for three hours over coffee. Zero pressure, just good vibes.<br/>
-              Highly recommeded if you need a friendly ear.
+              Highly recommeded if you need a friendly ear!
             </p>
             <span className="text-lg font-sans block text-accent"> Carlos M.</span>
           </blockquote>
