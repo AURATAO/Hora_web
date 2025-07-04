@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Mission from "./pages/Mission";
 
+
 function App() {
   return (
     <>
@@ -13,9 +14,9 @@ function App() {
           {/* Example: <Route path="/about" element={<About />} /> */}
         </Routes>
       </BrowserRouter>
-    
     </>
   );
 }
 
 export default App;
+

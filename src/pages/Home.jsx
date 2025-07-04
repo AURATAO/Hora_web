@@ -1,21 +1,59 @@
-import { MoveDownRight } from 'lucide-react';
-import {MoveDownLeft} from 'lucide-react';
+import React, { useEffect, useState } from 'react';
 import TestimonialsSlider from './components/TestimonialsSlider.jsx';
 import Logo_01 from './components/animated/Logo_01.jsx';
 import Logo_02 from './components/animated/Logo_02.jsx';
 import Logo_03 from './components/animated/Logo_03.jsx';
 import Header from './components/Header.jsx';
+import Footer from './components/Footer.jsx';
+
+
 
 export default function Home() {
+ const [handleColor, sethandleColor] = useState('bg-primary/20');
+    const [activeAnimated, setActiveAnimated] = useState(false);
+
+    useEffect(()=>{
+        const handleScroll =()=>{
+            const y = window.scrollY;
+             console.log("scrollY:", window.scrollY);
+            if (window.scrollY > 1000) {
+              console.log("Trigger animation!");
+              setActiveAnimated(true);
+            }
+
+           //setHandleColor 
+           if (y > 3347) {
+            sethandleColor('bg-primary');
+            } else if (y > 2148) {
+            sethandleColor('bg-accent');
+            } else if (y > 1410) {
+            sethandleColor('bg-primary');
+            } else if (y > 772 ) {
+            sethandleColor('bg-accent');
+            } else {
+            sethandleColor('bg-primary/40');
+            }
+        }
+         window.addEventListener('scroll', handleScroll);
+         return () => window.removeEventListener('scroll', handleScroll);
+    },[])
+
+     useEffect(() => {
+    console.log("activeAnimated changed:", activeAnimated);
+  }, [activeAnimated]);
+
+
   return (
   <>
- <Header/>
-  <main className="flex flex-col items-center justify-center min-h-screen bg-accent ">
+ <Header handleColor={handleColor}/>
+  <main className="flex max-x-7xl flex-col items-center justify-center min-h-screen bg-accent ">
     {/*banner*/}
-    <div className="banner w-full">
-      <div className="relative  h-[500px]  ">
-        <div className="absolute bottom-[-230px] left-1/3 translate-x-[-50%] p-8 w-full max-w-7xl text-center">
+    <div className="bg-[url(/img/banner_3.JPG)] bg-cover bg-right w-full min-h-[844px] md:bg-center">
+      <div className="relative h-[500px] ">
+        <div className="absolute bottom-[-230px] w-full text-center lg:text-left">
+          <div className='max-w-7xl mx-auto px-4'>
           <h1 className="text-7xl font-bold mb-2 font-heading text-accent ">Your Hour, Your Way</h1>
+          </div>
         </div>
     </div>
     </div>
@@ -35,53 +73,49 @@ export default function Home() {
       </a>
       </button>
     </div>
-    <div className="py-[72px] w-full mx-auto flex flex-col items-center justify-center bg-primary">
-      <div className="flex flex-col items-start justify-center px-[30px] w-full max-w-7xl">
+    <div className="py-[32px] w-full mx-auto flex flex-col items-center justify-center bg-primary">
+      <div className="flex flex-col items-start justify-center px-4 w-full md:items-center lg:items-start lg:px-0 max-w-7xl">
         <div className="pb-[64px] pt-8"> 
           <h2 className="text-6xl font-heading text-accent">Why Choose Hora?</h2>
           <p className="text-xl text-accent max-w-2xl pt-4">
             Your time, your needs — matched with trust and ease.
           </p>
         </div>
-
-        <div className="flex flex-col lg:flex-row items-start justify-between gap-[32px] w-full pt-[32px] pb-2 max-w-7xl">
-          <div className="flex flex-col items-start justify-between">
-            {/* <h2 className="text-[200px] font-semibold text-accent leading-none font-heading pb-[64px]">01</h2> */}
-           <div className='pb-[64px]'>
-            <Logo_01/>
+        <div className="flex flex-col lg:flex-row items-start justify-between gap-[32px] w-full pt-[32px] pb-2 md:items-center lg:items-start lg:px-4 max-w-7xl">
+          <div className="flex flex-col items-start justify-between py-4 md:items-center lg:items-start ">
+           <div className='pb-4'>
+            <Logo_01 activeAnimated={activeAnimated}/>
            </div>
-            <div className="flex flex-col items-start pt-2">
-              <h3 className="text-3xl font-semibold text-accent pb-4 font-heading">
+            <div className="flex flex-col items-start pt-2 md:items-center lg:items-start ">
+              <h3 className="text-3xl font-semibold text-accent pb-4 font-heading md:text-center lg:text-left">
                 Your safety, our priority.
               </h3>
-              <p className="text-lg text-accent max-w-xl">
+              <p className="text-lg text-accent max-w-xl md:text-center lg:text-left">
                 Every supporter and requester completes secure ID verification and background check. So you can hire or earn with total confidence.
               </p>
             </div>
           </div>
 
-          <div className="flex flex-col items-start justify-between">
-            {/* <h2 className="text-[200px] font-semibold text-accent leading-none font-heading pb-[64px]">02</h2> */}
-            <div className='pb-[64px]'>
-            <Logo_02/>
+          <div className="flex flex-col items-start justify-between py-4 md:items-center lg:items-start ">
+            <div className='pb-4'>
+            <Logo_02 activeAnimated ={activeAnimated}/>
             </div>
-            <div className="flex flex-col items-start pt-2">
-              <h3 className="text-3xl font-semibold text-accent pb-4 font-heading">
+            <div className="flex flex-col items-start pt-2 md:items-center lg:items-start md:text-center lg:text-left ">
+              <h3 className="text-3xl font-semibold text-accent pb-4 font-heading md:text-center lg:text-left">
                 Your Money, Always Protected
               </h3>
-              <p className="text-lg text-accent max-w-xl">
+              <p className="text-lg text-accent max-w-xl md:text-center lg:text-left">
                 We use trusted third-party processors like Stripe, so your payments are always secure and your money is protected.
               </p>
             </div>
           </div>
 
-          <div className="flex flex-col items-start justify-between">
-            {/* <h2 className="text-[200px] font-semibold text-accent leading-none font-heading pb-[64px]">03</h2> */}
-            <div className='pb-[64px]'>
-            <Logo_03/>
+          <div className="flex flex-col items-start justify-between py-4 md:items-center lg:items-start ">
+            <div className='pb-4 '>
+            <Logo_03 activeAnimated ={activeAnimated}/>
             </div>
-            <div className="flex flex-col items-start justify-center pt-2">
-              <h3 className="text-3xl font-semibold text-accent pb-4 font-heading">
+            <div className="flex flex-col items-start justify-center pt-2 md:items-center lg:items-start ">
+              <h3 className="text-3xl font-semibold text-accent pb-4 font-heading md:text-center lg:text-left">
                 Your every minute matters
               </h3>
               <p className="text-lg text-accent max-w-xl">
@@ -94,16 +128,16 @@ export default function Home() {
     </div>
     {/* Section 2 */}
     <div className=" bg-accent w-full mx-auto flex flex-col items-center justify-center max-w-7xl">
-      <label className="label flex self-end py-[48px]">
+      <label className="label flex self-end pt-5 mx-5">
         <div className="toggle">
           <input className="toggle-state" type="checkbox" name="check" value="check" />
           <div className="indicator"></div>
         </div>
       </label>
     {/* Section requester */}
-    <div className=" w-full mx-auto items-center justify-center pb-[32px] hidden">
-    <div className="bg-[url(/img/section_3_1.jpeg)] w-full h-[400px] md:w-full md:h-lvh bg-cover bg-center transition-transform duration-500 hover:scale-105"/>
-      <div className="w-full max-w-3xl mx-auto px-6 py-16 flex flex-col items-center justify-center">
+    <div className=" w-full mx-auto py-4 flex flex-col items-center justify-center lg:flex-row-reverse">
+      <div className="w-full max-w-3xl mx-auto px-6 pb-4 flex flex-col items-center justify-center">
+        <h2 className="text-4xl font-heading text-primary pb-10">How to Request Support</h2>
         {/* Step 1 */}
         <div className="flex flex-col items-start pb-12">
           <h2 className="text-[80px] font-semibold text-primary leading-none mb-4">01</h2>
@@ -112,17 +146,15 @@ export default function Home() {
             Join our exclusive circle of verified members. Your trust is our highest standard.
           </p>
         </div>
-       <MoveDownRight className='text-secondary transition-transform duration-500 hover:scale-200 ' size={32} />
 
         {/* Step 2 */}
-        <div className="flex flex-col items-end pb-12">
+        <div className="flex flex-col  items-start  lg:items-end pb-12">
           <h2 className="text-[80px] font-semibold text-primary leading-none mb-4">02</h2>
           <h3 className="text-2xl font-heading font-semibold text-primary mb-4">Post your needs</h3>
-          <p className="text-lg text-primary max-w-lg text-right">
+          <p className="text-lg text-primary max-w-lg lg:text-right">
             Specify your requirements with precision. We’ll connect you with exceptional supporters who meet your expectations.
           </p>
         </div>
-        <MoveDownLeft className='text-secondary transition-transform duration-500 hover:scale-200 ' size={32} />
 
         {/* Step 3 */}
         <div className="flex flex-col items-start">
@@ -133,11 +165,13 @@ export default function Home() {
           </p>
         </div>
       </div>
+      <div className="bg-[url(/img/section_3_1.jpeg)] w-full h-[400px] bg-cover bg-center md:h-[700px] lg:h-lvh transition-transform duration-500 hover:scale-105"/>
 
     </div>
     {/* Section supporter */}
-    <div className=" w-full mx-auto flex items-center justify-center pb-[32px]  ">
-      <div className="w-full max-w-3xl mx-auto px-6 py-16 flex flex-col items-center justify-center ">
+    <div className=" w-full mx-auto flex flex-col items-center justify-center lg:flex-row">
+      <div className="w-full max-w-7xl mx-auto px-6 py-4 flex flex-col items-center justify-center ">
+        <h2 className="text-4xl font-heading text-primary pb-10">How to Become a Supporter</h2>
         {/* Step 1 */}
         <div className="flex flex-col items-start pb-12">
           <h2 className="text-[80px] font-semibold text-primary leading-none mb-4">01</h2>
@@ -165,7 +199,7 @@ export default function Home() {
           </p>
         </div>
       </div>
-      <div className="bg-[url(/img/section_3_2.jpeg)] w-full h-[400px] md:w-full md:h-lvh bg-cover bg-center transition-transform duration-500 hover:scale-105" />
+      <div className="bg-[url(/img/section_3_2.jpeg)] w-full h-[400px] bg-cover bg-bottom md:h-[700px] lg:h-lvh transition-transform duration-500 hover:scale-105" />
     </div>
     </div>
     {/* Section 3 */}
@@ -180,15 +214,16 @@ export default function Home() {
     </div>
     {/* Section 4 */}
     <div className='w-full mx-auto flex flex-col items-center justify-center bg-primary py-[32px]'>
-  <div className="w-full mx-auto max-w-7xl flex flex-col items-start justify-center gap-32">
-    <p className='text-secondary text-xl'>What our users say</p>
+    <div className="w-full mx-auto max-w-7xl flex flex-col items-start justify-center gap-24">
+    <p className='text-secondary text-xl pt-8 mx-3'>What our users say</p>
     <TestimonialsSlider />
   </div>
     </div>
     {/* Section 5 */}
-    <div className='w-full h-[300px] mx-auto flex flex-col items-center justify-center bg-[url(/img/section_5_1.JPG)] bg-cotain bg-center bg-no-repeat py-[64px]'>
+    <div className='w-full h-[300px] mx-auto flex flex-col items-center justify-center bg-[url(/img/section_5_1.JPG)] bg-cotain bg-center bg-no-repeat py-[64px]'/>
 
-    </div>
+    {/* Footer */}
+    <Footer />
   </main>
     
   </>
