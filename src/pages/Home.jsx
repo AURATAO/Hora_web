@@ -10,7 +10,8 @@ import Footer from './components/Footer.jsx';
 
 export default function Home() {
  const [handleColor, sethandleColor] = useState('bg-primary/20');
-    const [activeAnimated, setActiveAnimated] = useState(false);
+ const [activeAnimated, setActiveAnimated] = useState(false);
+const [isSupporter, setIsSupporter] = useState(false);
 
     useEffect(()=>{
         const handleScroll =()=>{
@@ -58,8 +59,8 @@ export default function Home() {
     </div>
     </div>
     {/* Section 1 */}
-    <div className="py-[100px] w-full mx-auto flex flex-col items-center justify-center">
-      <h2 className="font-heading text-6xl text-left font-semibold mb-4 text-primary p-4">What is Hora?</h2>
+    <div className="py-[100px] w-full px-2 flex flex-col items-center justify-center">
+      <h2 className="font-heading text-5xl text-left font-semibold mb-4 text-primary p-4 md:text-6xl">What is Hora?</h2>
       <div className="text-lg mb-8 max-w-2xl text-center space-y-3 ">
         <p className=" text-primary ">Life’s busy. We get your time back.</p>
 
@@ -76,8 +77,8 @@ export default function Home() {
     <div className="py-[32px] w-full mx-auto flex flex-col items-center justify-center bg-primary">
       <div className="flex flex-col items-start justify-center px-4 w-full md:items-center lg:items-start lg:px-0 max-w-7xl">
         <div className="pb-[64px] pt-8"> 
-          <h2 className="text-6xl font-heading text-accent">Why Choose Hora?</h2>
-          <p className="text-xl text-accent max-w-2xl pt-4">
+          <h2 className="text-4xl font-heading text-accent md:text-6xl">Why Choose Hora?</h2>
+          <p className="text-lg text-accent max-w-2xl pt-4">
             Your time, your needs — matched with trust and ease.
           </p>
         </div>
@@ -128,14 +129,19 @@ export default function Home() {
     </div>
     {/* Section 2 */}
     <div className=" bg-accent w-full mx-auto flex flex-col items-center justify-center max-w-7xl">
-      <label className="label flex self-end pt-5 mx-5">
-        <div className="toggle">
-          <input className="toggle-state" type="checkbox" name="check" value="check" />
-          <div className="indicator"></div>
+      <label className="label flex self-end pt-5 mx-5" >
+        <div className="toggle" >
+          <input className="toggle-state" type="checkbox" name="check" value="check" checked={isSupporter}  onClick={() => setIsSupporter(!isSupporter)}/>
+           <div className="labels" >
+              <span className="icon-left text-sm text-primary/30">Requester</span>
+              <span className="icon-right text-sm text-primary/30">Supporter</span>
+            </div>
+          <div className="indicator">
+          </div>
         </div>
       </label>
     {/* Section requester */}
-    <div className=" w-full mx-auto py-4 flex flex-col items-center justify-center lg:flex-row-reverse">
+    <div className= {`w-full mx-auto pt-4 flex-col items-center justify-center lg:flex-row-reverse lg:py-4 ${isSupporter ? "hidden" : "flex"}`}>
       <div className="w-full max-w-3xl mx-auto px-6 pb-4 flex flex-col items-center justify-center">
         <h2 className="text-4xl font-heading text-primary pb-10">How to Request Support</h2>
         {/* Step 1 */}
@@ -165,12 +171,12 @@ export default function Home() {
           </p>
         </div>
       </div>
-      <div className="bg-[url(/img/section_3_1.jpeg)] w-full h-[400px] bg-cover bg-center md:h-[700px] lg:h-lvh transition-transform duration-500 hover:scale-105"/>
+      <div className="bg-[url(/img/section_3_1.jpeg)] w-full h-[400px] bg-cover bg-center md:h-[700px] lg:m-8 lg:h-lvh transition-transform duration-500 hover:scale-105"/>
 
     </div>
     {/* Section supporter */}
-    <div className=" w-full mx-auto flex flex-col items-center justify-center lg:flex-row">
-      <div className="w-full max-w-7xl mx-auto px-6 py-4 flex flex-col items-center justify-center ">
+    <div className={`w-full mx-auto pt-4 flex-col items-center justify-center lg:flex-row lg:p-4 ${isSupporter ? "flex" : "hidden"}`}>
+      <div className="w-full max-w-7xl mx-auto px-6 pb-4 flex flex-col items-center justify-center ">
         <h2 className="text-4xl font-heading text-primary pb-10">How to Become a Supporter</h2>
         {/* Step 1 */}
         <div className="flex flex-col items-start pb-12">
@@ -199,7 +205,7 @@ export default function Home() {
           </p>
         </div>
       </div>
-      <div className="bg-[url(/img/section_3_2.jpeg)] w-full h-[400px] bg-cover bg-bottom md:h-[700px] lg:h-lvh transition-transform duration-500 hover:scale-105" />
+      <div className=" bg-[url(/img/section_3_2.jpeg)] w-full h-[400px] bg-cover bg-bottom md:h-[700px] lg:h-lvh lg:m-8 transition-transform duration-500 hover:scale-105 " />
     </div>
     </div>
     {/* Section 3 */}
