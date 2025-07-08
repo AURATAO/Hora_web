@@ -11,33 +11,33 @@ export default function Footer() {
                 <div className='pt-5 w-full md:w-1/3 '>
                     <ul className='flex flex-col items-start justify-start gap-4 '>
                     <li className='text-accent/30 text-lg'>Index</li>
-                    <li className='text-accent hover:text-secondary text-sm'>Mission</li>
+                    <li className='text-accent hover:text-secondary text-sm'><a href="/">Mission</a></li>
                     <li>
                         <ul className='flex items-center justify-center gap-2'>
-                        <li className='text-accent hover:text-secondary text-sm'>Contact</li>
-                        <li className='text-accent hover:text-secondary text-sm'>ig</li>
-                        <li className='text-accent hover:text-secondary text-sm'>linkedin</li>
+                        <li className='text-accent hover:text-secondary text-sm'><a href="/">Contact</a></li>
+                        <li className='text-accent hover:text-secondary text-sm'><a href="/">ig</a></li>
+                        <li className='text-accent hover:text-secondary text-sm'><a href="/">linkedin</a></li>
                         </ul>
                     </li>
                     </ul>
                 </div>
                 <div className='pt-5 w-full md:w-1/3 '>
                     <ul className='flex flex-col items-start justify-start gap-4'>
-                    <li className='text-accent/30 text-lg'>Resources</li>
-                    <li className='text-accent hover:text-secondary text-sm'>Safe Matching Tips</li>
-                    <li className='text-accent hover:text-secondary text-sm'>FAQ</li>
-                    <li className='text-accent hover:text-secondary text-sm'>Trust & Safety</li>
-                    <li className='text-accent hover:text-secondary text-sm'>Partner with Hora</li>
-                    <li className='text-accent hover:text-secondary text-sm'>Press Resource</li>
+                    <li className='text-accent/30 text-lg'> Resources</li>
+                    <li className='text-accent hover:text-secondary text-sm'> <a href="">Safe Matching Tips</a></li>
+                    <li className='text-accent hover:text-secondary text-sm'> <a href="">FAQ</a></li>
+                    <li className='text-accent hover:text-secondary text-sm'><a href="">Trust & Safety</a></li>
+                    <li className='text-accent hover:text-secondary text-sm'> <a href="">Partner with Hora </a></li>
+                    <li className='text-accent hover:text-secondary text-sm'> <a href="">Press Resourcea</a> </li>
                     </ul>
                 </div>
                 <div className='pt-5 w-full md:w-1/3 '>
                     <ul className='flex flex-col items-start justify-start gap-4'>
                     <li className='text-accent/30 text-lg'>Legal</li>
-                    <li className='text-accent hover:text-secondary text-sm'>Terms</li>
-                    <li className='text-accent hover:text-secondary text-sm'>Privacy</li>
-                    <li className='text-accent hover:text-secondary text-sm'>Coookie Policy</li>
-                    <li className='text-accent hover:text-secondary text-sm'>Do Not Sell My Personal Information</li>
+                    <li className='text-accent hover:text-secondary text-sm'><a href="/">Terms</a></li>
+                    <li className='text-accent hover:text-secondary text-sm'><a href="/">Privacy</a></li>
+                    <li className='text-accent hover:text-secondary text-sm'><a href="/">Coookie Policy</a></li>
+                    <li className='text-accent hover:text-secondary text-sm'><a href="/">Do Not Sell My Personal Information</a></li>
                     </ul>
                 </div>
                 </div>

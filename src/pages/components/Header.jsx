@@ -4,8 +4,6 @@ import 'hamburgers/dist/hamburgers.min.css';
 
 export default function Header({handleColor}) {
       const [isActive, setIsActive] = useState(false);
-    
-    
     return (
         <>
          <header className={`flex items-center justify-even px-3 h-[72px] w-full fixed shadow-[0_12px_22px_0_rgba(0,0,0,0.08)] z-40 ${handleColor}`} >
