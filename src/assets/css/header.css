@@ -1,11 +1,11 @@
-
-.hamburger-inner,
-.hamburger-inner::before,
-.hamburger-inner::after {
-  background-color: #E5E7EB !important;
+.hamburger-light .hamburger-inner,
+.hamburger-light .hamburger-inner::before,
+.hamburger-light .hamburger-inner::after {
+  background-color: #E5E7EB!important;
 }
 
-.hamburger-box {
-  width: 15px;
-  height: auto;
+.hamburger-dark .hamburger-inner,
+.hamburger-dark .hamburger-inner::before,
+.hamburger-dark .hamburger-inner::after {
+  background-color: #222831 !important;
 }

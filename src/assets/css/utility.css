@@ -66,3 +66,17 @@
   transform: translate3d(25%, 0, 0);
 }
 
+/* 整條軌道 */
+::-webkit-scrollbar {
+  height: 4px;  /* 水平滾軸 */
+}
+
+::-webkit-scrollbar {
+  height: 1px;
+}
+::-webkit-scrollbar-thumb {
+  background: transparent;
+}
+.scroll-container:hover::-webkit-scrollbar-thumb {
+  background: #A3C585;
+}

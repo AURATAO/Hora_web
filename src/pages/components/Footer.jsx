@@ -1,8 +1,8 @@
 export default function Footer() {
     return (
         <>
-         <footer className="w-full flex items-center justify-center bg-primary py-[32px]">
-            <div className='w-full mx-3 flex-col items-start justify-center md:items-center md:justify-center  lg:max-w-7xl'>
+         <footer className="w-full bg-primary py-[32px]">
+            <div className=' mx-auto px-8 flex-col items-start  md:items-center  lg:max-w-7xl'>
                 <div className='w-full flex flex-col items-start justify-center md:flex-row md:items-start md:justify-center md:gap-8 lg:max-w-7xl '>
                 <div className='hidden w-full h-[300px] mx-auto flex-col items-start justify-end  lg:flex '>
                 <h2 className='text-5xl text-accent font-heading mb-auto'>Hora</h2>
