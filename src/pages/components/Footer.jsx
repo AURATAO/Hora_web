@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Footer() {
     return (
         <>
@@ -11,12 +13,12 @@ export default function Footer() {
                 <div className='pt-5 w-full md:w-1/3 '>
                     <ul className='flex flex-col items-start justify-start gap-4 '>
                     <li className='text-accent/30 text-lg'>Index</li>
-                    <li className='text-accent hover:text-secondary text-sm'><a href="/">Mission</a></li>
+                    <li className='text-accent hover:text-secondary text-sm'><Link to="/mission">Mission</Link></li>
                     <li>
                         <ul className='flex items-center justify-center gap-2'>
-                        <li className='text-accent hover:text-secondary text-sm'><a href="/">Contact</a></li>
-                        <li className='text-accent hover:text-secondary text-sm'><a href="/">ig</a></li>
-                        <li className='text-accent hover:text-secondary text-sm'><a href="/">linkedin</a></li>
+                        <li className='text-accent hover:text-secondary text-sm'><Link to="/">Contact</Link></li>
+                        <li className='text-accent hover:text-secondary text-sm'><Link to="/">ig</Link></li>
+                        <li className='text-accent hover:text-secondary text-sm'><Link to="/">linkedin</Link></li>
                         </ul>
                     </li>
                     </ul>
@@ -24,20 +26,20 @@ export default function Footer() {
                 <div className='pt-5 w-full md:w-1/3 '>
                     <ul className='flex flex-col items-start justify-start gap-4'>
                     <li className='text-accent/30 text-lg'> Resources</li>
-                    <li className='text-accent hover:text-secondary text-sm'> <a href="">Safe Matching Tips</a></li>
-                    <li className='text-accent hover:text-secondary text-sm'> <a href="">FAQ</a></li>
-                    <li className='text-accent hover:text-secondary text-sm'><a href="">Trust & Safety</a></li>
-                    <li className='text-accent hover:text-secondary text-sm'> <a href="">Partner with Hora </a></li>
-                    <li className='text-accent hover:text-secondary text-sm'> <a href="">Press Resourcea</a> </li>
+                    <li className='text-accent hover:text-secondary text-sm'> <Link to="">Safe Matching Tips</Link></li>
+                    <li className='text-accent hover:text-secondary text-sm'> <Link to="">FAQ</Link></li>
+                    <li className='text-accent hover:text-secondary text-sm'><Link to="">Trust & Safety</Link></li>
+                    <li className='text-accent hover:text-secondary text-sm'> <Link to="">Partner with Hora </Link></li>
+                    <li className='text-accent hover:text-secondary text-sm'> <Link to="">Press Resourcea</Link> </li>
                     </ul>
                 </div>
                 <div className='pt-5 w-full md:w-1/3 '>
                     <ul className='flex flex-col items-start justify-start gap-4'>
                     <li className='text-accent/30 text-lg'>Legal</li>
-                    <li className='text-accent hover:text-secondary text-sm'><a href="/">Terms</a></li>
-                    <li className='text-accent hover:text-secondary text-sm'><a href="/">Privacy</a></li>
-                    <li className='text-accent hover:text-secondary text-sm'><a href="/">Coookie Policy</a></li>
-                    <li className='text-accent hover:text-secondary text-sm'><a href="/">Do Not Sell My Personal Information</a></li>
+                    <li className='text-accent hover:text-secondary text-sm'><Link to="/terms">Terms</Link></li>
+                    <li className='text-accent hover:text-secondary text-sm'><Link to="/">Privacy</Link></li>
+                    <li className='text-accent hover:text-secondary text-sm'><Link to="/">Coookie Policy</Link></li>
+                    <li className='text-accent hover:text-secondary text-sm'><Link to="/">Do Not Sell My Personal Information</Link></li>
                     </ul>
                 </div>
                 </div>

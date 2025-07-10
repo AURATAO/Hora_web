@@ -1,13 +1,16 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import ScrollToTop from "./pages/components/ ScrollToTop";
 import Home from "./pages/Home";
 import Mission from "./pages/Mission";
 import Terms from "./pages/Terms";
+
 
 
 function App() {
   return (
     <>
       <BrowserRouter>
+       <ScrollToTop />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/mission" element={<Mission />} />

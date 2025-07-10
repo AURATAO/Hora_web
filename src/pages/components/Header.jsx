@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from "react-router-dom";
 import {Download}from 'lucide-react';
 import 'hamburgers/dist/hamburgers.min.css';
 
@@ -18,8 +19,8 @@ export default function Header({handleColor, showHeader=true}) {
             <div className="flex items-center justify-between w-full mx-auto lg:max-w-7xl">
             <nav className="flex space-x-5">
                 <div className='hidden lg:flex gap-5'>
-                    <a href="/" className={`${handleColor === 'bg-accent' ? 'text-primary' : 'text-accent'} text-xl font-light hover:text-gray-500`}>Home</a>
-                    <a href="/mission" className={`${handleColor === 'bg-accent' ? 'text-primary' : 'text-accent'} text-xl font-light hover:text-gray-500`}>Mission</a>
+                    <Link to="/" className={`${handleColor === 'bg-accent' ? 'text-primary' : 'text-accent'} text-xl font-light hover:text-gray-500`}>Home</Link>
+                    <Link to="/mission" className={`${handleColor === 'bg-accent' ? 'text-primary' : 'text-accent'} text-xl font-light hover:text-gray-500`}>Mission</Link>
                 </div>
               <div className='flex justify-between items-center lg:hidden'>
                <div
@@ -36,7 +37,9 @@ export default function Header({handleColor, showHeader=true}) {
               </div>
             </nav>
             <div className="flex items-center justify-center">
-            <h1 className={`text-4xl font-normal font-heading md:text-5xl ${handleColor === 'bg-accent' ? 'text-primary' : 'text-accent'}`}>Hora</h1>
+            <h1 className={`text-4xl font-normal font-heading md:text-5xl ${handleColor === 'bg-accent' ? 'text-primary' : 'text-accent'}`}>
+              <Link to="/">Hora</Link>
+              </h1>
             </div>
             <button className='lg:px-[33px]' >
             <a href="/mission" className="inline-flex text-xs p-2 items-center bg-secondary text-white md:p-3 rounded-full hover:bg-transparent hover:border hover:border-secondary hover:text-secondary transition-colors duration-300 ">
