@@ -1,12 +1,20 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {Download}from 'lucide-react';
 import 'hamburgers/dist/hamburgers.min.css';
 
 export default function Header({handleColor, showHeader=true}) {
       const [isActive, setIsActive] = useState(false);
+      
+      useEffect(()=>{
+        if(isActive){
+          document.body.classList.add('overflow-hidden');
+        }else{
+          document.body.classList.remove('overflow-hidden')
+        }
+      },[isActive])
     return (
         <>
-         <header className={` ${showHeader ? 'translate-y-0' : '-translate-y-full'} flex items-center justify-even px-3 h-[72px] w-full fixed shadow-[0_12px_22px_0_rgba(0,0,0,0.08)] z-40 ${handleColor}`} >
+         <header className={` ${showHeader ? 'translate-y-0' : '-translate-y-full'} flex items-center justify-even px-3  h-[72px] w-full fixed shadow-[0_12px_22px_0_rgba(0,0,0,0.08)] z-40 ${handleColor}`} >
             <div className="flex items-center justify-between w-full mx-auto lg:max-w-7xl">
             <nav className="flex space-x-5">
                 <div className='hidden lg:flex gap-5'>
@@ -39,7 +47,7 @@ export default function Header({handleColor, showHeader=true}) {
             </div>
         </header>
         <div
-        className={`fixed top-[72px] left-0 w-full h-screen bg-primary/70 transition-all duration-500 ease-in-out z-30 flex flex-col items-center justify-start ${
+        className={`fixed top-[72px] pt-8 left-0 w-full h-screen bg-primary/70 transition-all duration-500 ease-in-out z-30 flex flex-col items-center justify-start ${
           isActive ? "opacity-100" : "opacity-0 pointer-events-none"
         } lg:hidden` }
       >
