@@ -111,7 +111,7 @@ export default function Mission() {
           <img src="/img/banner_1.jpg" alt="" className="object-cover w-full h-full"/>
            <div className="absolute inset-0 bg-gradient-to-b from-transparent to-white"></div>
           </div>
-          <div className="flex flex-col justify-center items-center absolute top-[400px] mx-8 lg:max-w-7xl lg:gap-4 lg:static" >
+          <div className="flex flex-col justify-center items-center absolute top-[350px] mx-8 lg:max-w-7xl lg:gap-4 lg:static" >
              <h1 className="text-primary font-heading text-4xl text-center md:text-7xl  lg:text-left lg:pt-[20px] font-semibold ">Unlocking the latent value of time.</h1>
              <p className=" text-primary  text-lg text-center pt-4 md:text-xl  lg:text-left lg:font-light ">A smarter way to delegate life’s small burdens, or turn spare time into fair earnings.</p>
             <img src="/img/banner_1.jpg" alt="" className="hidden rounded-2xl w-full h-full lg:flex"/>
