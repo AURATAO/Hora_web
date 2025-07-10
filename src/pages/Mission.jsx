@@ -9,9 +9,11 @@ import { TECollapse } from "tw-elements-react";
 
 export default function Mission() {
    const lastScrollY = useRef(0);
-   const [showHeader, setShowHeader] = useState(false);
+   const [showHeader, setShowHeader] = useState(true);
+   const [handleColor, setHandleColor] = useState('bg-primary');
    const [activeAnimated, setActiveAnimated] = useState(false);
    const timeoutId = useRef(null);
+
 
    useEffect(() => {
     const handleScroll = () => {
@@ -45,11 +47,38 @@ export default function Mission() {
 
   useEffect(()=>{
            const handleScroll =()=>{
-                console.log("scrollY:", window.scrollY);
-               if (window.scrollY > 1000) {
+            const y = window.scrollY;
+            const width = window.innerWidth;
+                console.log("scrollY:", y);
+               if (y> 1000) {
                  console.log("Trigger animation!");
                  setActiveAnimated(true);
                }
+
+                //setHandleColor 
+             if (width < 1024) {
+              // 手機
+              if(y > 4360){
+                setHandleColor('bg-primary');
+              } else if (y > 3660) {
+                setHandleColor('bg-accent');
+              } else if (y > 331){
+                setHandleColor('bg-primary');
+              }else {
+                setHandleColor('bg-accent/40');
+              }
+            } else {
+              // 桌機
+              if(y > 3615 ){
+                setHandleColor('bg-primary')
+              } else if (y > 2581) {
+                setHandleColor('bg-accent');
+              } else if (y > 1596) {
+                setHandleColor('bg-primary');
+              } else {
+                setHandleColor('bg-accent');
+              }
+            }
            }
             window.addEventListener('scroll', handleScroll);
             return () => window.removeEventListener('scroll', handleScroll);
@@ -75,14 +104,14 @@ export default function Mission() {
 
   return (
     <>
-      <Header showHeader={showHeader}  />
-      <main className="bg-accent/30 pt-[72px]">
+      <Header showHeader={showHeader} handleColor={handleColor}  />
+      <main className="bg-accent/30 md:pt-[72px]">
         <div className="max-w-7xl mx-auto ">
           <div className="relative w-full h-100 lg:hidden">
           <img src="/img/banner_1.jpg" alt="" className="object-cover w-full h-full"/>
            <div className="absolute inset-0 bg-gradient-to-b from-transparent to-white"></div>
           </div>
-          <div className="flex flex-col justify-center items-center absolute top-[400px] z-40 mx-8 lg:max-w-7xl lg:gap-4 lg:static" >
+          <div className="flex flex-col justify-center items-center absolute top-[400px] mx-8 lg:max-w-7xl lg:gap-4 lg:static" >
              <h1 className="text-primary font-heading text-4xl text-center md:text-7xl  lg:text-left lg:pt-[20px] font-semibold ">Unlocking the latent value of time.</h1>
              <p className=" text-primary  text-lg text-center pt-4 md:text-xl  lg:text-left lg:font-light ">A smarter way to delegate life’s small burdens, or turn spare time into fair earnings.</p>
             <img src="/img/banner_1.jpg" alt="" className="hidden rounded-2xl w-full h-full lg:flex"/>

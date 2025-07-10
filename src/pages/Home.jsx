@@ -9,13 +9,14 @@ import Footer from './components/Footer.jsx';
 
 
 export default function Home() {
- const [handleColor, sethandleColor] = useState('bg-primary/20');
+ const [handleColor, sethandleColor] = useState('bg-primary/40');
  const [activeAnimated, setActiveAnimated] = useState(false);
 const [isSupporter, setIsSupporter] = useState(false);
 
     useEffect(()=>{
         const handleScroll =()=>{
             const y = window.scrollY;
+            const width = window.innerWidth;
              console.log("scrollY:", window.scrollY);
             if (window.scrollY > 1000) {
               console.log("Trigger animation!");
@@ -23,17 +24,33 @@ const [isSupporter, setIsSupporter] = useState(false);
             }
 
            //setHandleColor 
-           if (y > 3347) {
-            sethandleColor('bg-primary');
-            } else if (y > 2148) {
-            sethandleColor('bg-accent');
-            } else if (y > 1410) {
-            sethandleColor('bg-primary');
-            } else if (y > 772 ) {
-            sethandleColor('bg-accent');
+           if(width < 1024 ){
+            if(y > 4136){
+              sethandleColor('bg-primary');
+            }else if(y>3113){
+              sethandleColor('bg-accent');
+            }else if(y > 1496 ){
+              sethandleColor('bg-primary');
+            }else if(y > 774){
+              sethandleColor('bg-accent');
             } else {
-            sethandleColor('bg-primary/40');
+              sethandleColor('bg-primary');
             }
+
+           } else {
+
+             if (y > 3347) {
+              sethandleColor('bg-primary');
+              } else if (y > 2148) {
+              sethandleColor('bg-accent');
+              } else if (y > 1410) {
+              sethandleColor('bg-primary');
+              } else if (y > 772 ) {
+              sethandleColor('bg-accent');
+              } else {
+              sethandleColor('bg-primary/40');
+              }
+           }
         }
          window.addEventListener('scroll', handleScroll);
          return () => window.removeEventListener('scroll', handleScroll);
@@ -49,7 +66,7 @@ const [isSupporter, setIsSupporter] = useState(false);
  <Header handleColor={handleColor}/>
   <main className="flex max-x-7xl flex-col items-center justify-center min-h-screen bg-accent ">
     {/*banner*/}
-    <div className="bg-[url(/img/banner_3.JPG)] bg-cover bg-right w-full min-h-[844px] md:bg-center">
+    <div className="bg-[url(/img/banner_3.JPG)] bg-cover bg-[position:80%_center] w-full min-h-[844px] md:bg-center">
       <div className="relative h-[500px] ">
         <div className="absolute bottom-[-230px] w-full text-center lg:text-left">
           <div className='max-w-7xl mx-auto px-4'>
@@ -131,7 +148,7 @@ const [isSupporter, setIsSupporter] = useState(false);
     <div className=" bg-accent w-full mx-auto flex flex-col items-center justify-center max-w-7xl">
       <label className="label flex self-end pt-5 mx-5" >
         <div className="toggle" >
-          <input className="toggle-state" type="checkbox" name="check" value="check" checked={isSupporter}  onClick={() => setIsSupporter(!isSupporter)}/>
+          <input className="toggle-state" type="checkbox" name="check" value="check" checked={isSupporter}  onChange={() => setIsSupporter(!isSupporter)}/>
            <div className="labels" >
               <span className="icon-left text-sm text-primary/30">Requester</span>
               <span className="icon-right text-sm text-primary/30">Supporter</span>
