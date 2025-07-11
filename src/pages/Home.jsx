@@ -5,7 +5,7 @@ import Logo_02 from './components/animated/Logo_02.jsx';
 import Logo_03 from './components/animated/Logo_03.jsx';
 import Header from './components/Header.jsx';
 import Footer from './components/Footer.jsx';
-import Stopwatch from './components/StopWatch.jsx';
+import Stopwatch from '../pages/components/Stopwatch.jsx';
 
 
 
