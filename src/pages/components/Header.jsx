@@ -3,9 +3,14 @@ import { Link } from "react-router-dom";
 import {Download}from 'lucide-react';
 import 'hamburgers/dist/hamburgers.min.css';
 
-export default function Header({handleColor, showHeader=true}) {
+export default function Header({handleColor, showHeader=true, secondsElapsed,flipped }) {
       const [isActive, setIsActive] = useState(false);
-      
+
+        const hours = Math.floor(secondsElapsed / 3600);
+        const minutes = Math.floor((secondsElapsed % 3600) / 60);
+        const seconds = secondsElapsed % 60;
+        const earned = (secondsElapsed * (16.50/3600)).toFixed(4);
+            
       useEffect(()=>{
         if(isActive){
           document.body.classList.add('overflow-hidden');
@@ -36,16 +41,28 @@ export default function Header({handleColor, showHeader=true}) {
                </div>
               </div>
             </nav>
-            <div className="flex items-center justify-center">
-            <h1 className={`text-4xl font-normal font-heading md:text-5xl ${handleColor === 'bg-accent' ? 'text-primary' : 'text-accent'}`}>
+            <div className={`flex items-center justify-center logo-flip ${flipped ? "flipped" : ""}`}>
+            <div className={`front text-4xl font-normal font-heading md:text-5xl ${handleColor === 'bg-accent' ? 'text-primary' : 'text-accent'}`}>
               <Link to="/">Hora</Link>
-              </h1>
             </div>
-            <button className='lg:px-[33px]' >
-            <a href="/mission" className="inline-flex text-xs p-2 items-center bg-secondary text-white md:p-3 rounded-full hover:bg-transparent hover:border hover:border-secondary hover:text-secondary transition-colors duration-300 ">
+            <div className="back text-center flex flex-col justify-center items-center md:flex-row md:gap-4">
+                 <div className={`logo-flip font-secondary ${handleColor === 'bg-accent' ? 'text-primary !important' : 'text-accent !important'}`}>
+                  {hours.toString().padStart(2,'0')}:
+                  {minutes.toString().padStart(2,'0')}:
+                  {seconds.toString().padStart(2,'0')}
+                </div>
+                 <div className="dot hidden md:inline-block flex-shrink-0 mb-" ></div>
+                <div className={`logo-flip font-secondary ${handleColor === 'bg-accent' ? 'text-primary !important' : 'text-accent !important'}`}>
+                  ${earned}
+                </div>
+            </div>
+            </div>
+          
+            <button className='flex justify-center items-center button-tech-sm md:button-tech ' >
+            <a href="/mission" className=" ">
                 Download
-                <Download className='hidden ml-2 text-accent  hover:text-secondary  sm:flex' size={15}/>
             </a>
+                <Download className='hidden' size={15}/>
             </button>
             </div>
         </header>

@@ -50,7 +50,7 @@ export default function Mission() {
             const y = window.scrollY;
             const width = window.innerWidth;
                 console.log("scrollY:", y);
-               if (y> 1000) {
+               if (y> 1630) {
                  console.log("Trigger animation!");
                  setActiveAnimated(true);
                }

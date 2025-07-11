@@ -28,10 +28,10 @@ export default function TestimonialsSlider() {
                     fill="currentColor" />
             </svg>
             </div>
-            <p className="text-2xl md:text-3xl font-serif text-accent mb-6">
+            <p className="text-2xl md:text-3xl font-secondary text-accent mb-6">
              I hired someone on Hora to help move my new dresser — saved a ton on delivery fees. Super chill experience, he even helped me set it up.
             </p>
-            <span className="text-lg font-sans block text-accent">Sofia R.</span>
+            <span className="text-lg font-secondary block text-accent">Sofia R.</span>
           </blockquote>
         </SwiperSlide>
         <SwiperSlide>
@@ -48,11 +48,11 @@ export default function TestimonialsSlider() {
                     fill="currentColor" />
             </svg>
             </div>
-            <p className="text-2xl md:text-3xl font-serif text-accent mb-6">
+            <p className="text-2xl md:text-3xl font-secondary text-accent mb-6">
               I love how easy it is to find someone reliable on Hora.<br/>
               I posted my request in the morning and by lunch, everything was sorted. So simple!
             </p>
-            <span className="text-lg font-sans block text-accent">Emily T.</span>
+            <span className="text-lg font-secondary block text-accent">Emily T.</span>
           </blockquote>
         </SwiperSlide>
         <SwiperSlide>
@@ -69,11 +69,11 @@ export default function TestimonialsSlider() {
                     fill="currentColor" />
             </svg>
             </div>
-            <p className="text-2xl md:text-3xl font-serif text-accent mb-6">
+            <p className="text-2xl md:text-3xl font-secondary text-accent mb-6">
               I’d just gotten out of a long relationship and needed someone to talk to. Ended up chatting for three hours over coffee. Zero pressure, just good vibes.<br/>
               Highly recommeded if you need a friendly ear!
             </p>
-            <span className="text-lg font-sans block text-accent"> Carlos M.</span>
+            <span className="text-lg font-secondary block text-accent"> Carlos M.</span>
           </blockquote>
         </SwiperSlide>
         <SwiperSlide>
@@ -90,9 +90,9 @@ export default function TestimonialsSlider() {
                     fill="currentColor" />
             </svg>
             </div>
-            <p className="text-2xl md:text-3xl font-serif text-accent mb-6">
+            <p className="text-2xl md:text-3xl font-secondary text-accent mb-6">
               I was nervous booking someone just to have dinner with me, but everyone’s been so kind and genuine. Already planning to have someone join me for a movie next time. </p>
-            <span className="text-lg font-sans block text-accent"> Lina K.</span>
+            <span className="text-lg font-secondary block text-accent"> Lina K.</span>
           </blockquote>
         </SwiperSlide>
         <SwiperSlide>
@@ -109,9 +109,9 @@ export default function TestimonialsSlider() {
                     fill="currentColor" />
             </svg>
             </div>
-            <p className="text-2xl md:text-3xl font-serif text-accent mb-6">
+            <p className="text-2xl md:text-3xl font-secondary text-accent mb-6">
               I have a car, so on weekends I pick up small gigs through Hora. Easy way to make extra cash, and the people I’ve met have all been really friendly.  </p>
-            <span className="text-lg font-sans block text-accent"> Davide T.</span>
+            <span className="text-lg font-secondary block text-accent"> Davide T.</span>
           </blockquote>
         </SwiperSlide>
       </Swiper>
