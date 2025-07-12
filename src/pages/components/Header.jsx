@@ -23,8 +23,7 @@ export default function Header({handleColor, showHeader=true, secondsElapsed,fli
          <header className={` ${showHeader ? 'translate-y-0' : '-translate-y-full'} flex items-center justify-even px-3  h-[72px] w-full fixed shadow-[0_12px_22px_0_rgba(0,0,0,0.08)] z-40 ${handleColor}`} >
             <div className="flex items-center justify-between w-full mx-auto lg:max-w-7xl">
             <nav className="flex space-x-5">
-                <div className='hidden lg:flex gap-5'>
-                    <Link to="/" className={`${handleColor === 'bg-accent' ? 'text-primary' : 'text-accent'} text-xl font-light hover:text-gray-500`}>Home</Link>
+                <div className='hidden lg:flex'  data-aos="fade-up" >
                     <Link to="/mission" className={`${handleColor === 'bg-accent' ? 'text-primary' : 'text-accent'} text-xl font-light hover:text-gray-500`}>Mission</Link>
                 </div>
               <div className='flex justify-between items-center lg:hidden'>
@@ -42,7 +41,7 @@ export default function Header({handleColor, showHeader=true, secondsElapsed,fli
               </div>
             </nav>
             <div className={`flex items-center justify-center logo-flip ${flipped ? "flipped" : ""}`}>
-            <div className={`front text-4xl font-normal font-heading md:text-5xl ${handleColor === 'bg-accent' ? 'text-primary' : 'text-accent'}`}>
+            <div className={`front text-4xl font-normal font-heading md:text-5xl ${handleColor === 'bg-accent' ? 'text-primary' : 'text-accent'}`} >
               <Link to="/">Hora</Link>
             </div>
             <div className="back text-center flex flex-col justify-center items-center md:flex-row md:gap-4">
@@ -58,7 +57,8 @@ export default function Header({handleColor, showHeader=true, secondsElapsed,fli
             </div>
             </div>
           
-            <button className='flex justify-center items-center button-tech-sm md:button-tech ' >
+            <button className='flex justify-center items-center button-tech-sm md:button-tech 'data-aos="fade-up"
+     data-aos-anchor-placement="bottom-center" >
             <a href="/mission" className=" ">
                 Download
             </a>

@@ -15,7 +15,7 @@ export default function Stopwatch( { secondsElapsed }) {
 
   return (
     <>
-      <div className="flex gap-5 pb-8 pt-10 border-t-1">
+      <div className="flex gap-5 pb-8 pt-10 ">
         <div>
           <span className="countdown  text-4xl text-primary">
             <span style={{"--value":days}}  className="text-primary ">{days}</span>

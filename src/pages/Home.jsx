@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useRef, useState } from 'react';
 import TestimonialsSlider from './components/TestimonialsSlider.jsx';
 import Logo_01 from './components/animated/Logo_01.jsx';
 import Logo_02 from './components/animated/Logo_02.jsx';
@@ -6,34 +6,87 @@ import Logo_03 from './components/animated/Logo_03.jsx';
 import Header from './components/Header.jsx';
 import Footer from './components/Footer.jsx';
 import Stopwatch from '../pages/components/Stopwatch.jsx';
-
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 
 export default function Home() {
-const [handleColor, sethandleColor] = useState('bg-accent');
-const [activeAnimated, setActiveAnimated] = useState(false);
-const [isSupporter, setIsSupporter] = useState(false);
-const [secondsElapsed, setSecondsElapsed] = useState(0);
- const [flipped, setFlipped] = useState(false);
-
+  const [handleColor, sethandleColor] = useState('bg-accent');
+  const [activeAnimated, setActiveAnimated] = useState(false);
+  const [isSupporter, setIsSupporter] = useState(false);
+  const [secondsElapsed, setSecondsElapsed] = useState(0);
+  const [flipped, setFlipped] = useState(false);
+  
   useEffect(() => {
     const interval = setInterval(() => {
       setSecondsElapsed(prev => prev + 1);
     }, 1000);
     return () => clearInterval(interval);
-    }, []);
+  }, []);
 
-    useEffect(() => {
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          setFlipped(!entry.isIntersecting);
-        },
-        { threshold: 0.1 }
-      );
-      const hero = document.querySelector('.hero');
-      if (hero) observer.observe(hero);
-      return () => observer.disconnect();
-    }, []);
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setFlipped(!entry.isIntersecting);
+      },
+      { threshold: 0.1 }
+    );
+    const hero = document.querySelector('.hero');
+    if (hero) observer.observe(hero);
+    return () => observer.disconnect();
+  }, []);
+  
+  useEffect(() => {
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.set(titleRef.current, { opacity: 0, y: 80, skewY: 9 });
+  gsap.set(stopwatchRef.current, { opacity: 0, x: -100 });
+
+  const tl = gsap.timeline();
+  tl.to(titleRef.current, {
+    opacity: 1,
+    y: 0,
+    skewY: 0,
+    duration: 1.5,
+    ease: "back.out"
+  })
+  .to(stopwatchRef.current, {
+    opacity: 1,
+    x: 0,
+    duration: 1
+  }, "-=0.5");
+
+  gsap.from(h2Ref.current, {
+    opacity: 0,
+    y: 40,
+    duration: 1,
+    scrollTrigger: {
+      trigger: h2Ref.current,
+      start: "top 90%",
+      toggleActions: "play none none none",
+    }
+  });
+
+  gsap.from([...paragraphs.current], {
+    opacity: 0,
+    y: 20,
+    duration: 1,
+    stagger: 0.2,
+    scrollTrigger: {
+      trigger: h2Ref.current,
+      start: "top 90%",
+      toggleActions: "play none none none",
+    }
+  });
+
+  return () => {
+    tl.kill();
+    ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+  };
+}, []);
+
 
     useEffect(()=>{
         const handleScroll =()=>{
@@ -82,29 +135,95 @@ const [secondsElapsed, setSecondsElapsed] = useState(0);
     console.log("activeAnimated changed:", activeAnimated);
   }, [activeAnimated]);
 
+  const titleRef = useRef(null)
+  const stopwatchRef = useRef(null)
+  const pinSectionRef = useRef(null)
+  const h2Ref = useRef(null)
+  const paragraphs = useRef([])
+
+useEffect(() => {
+  paragraphs.current = paragraphs.current.slice(0, 2)
+  gsap.set(titleRef.current, { opacity: 0, y: 80, skewY: 9 })
+  gsap.set(stopwatchRef.current, { opacity: 0, x: -100 })
+
+  const tl = gsap.timeline()
+  tl.to(titleRef.current, {
+    opacity: 1,
+    y: 0,
+    skewY: 0,
+    duration: 1.5,
+    ease: "back.out"
+  })
+  .to(stopwatchRef.current, {
+    opacity: 1,
+    x: 0,
+    duration: 1
+  }, "-=0.5")
+
+   // h2 單獨 scrollTrigger
+  gsap.from(h2Ref.current, {
+    opacity: 0,
+    y: 40,
+    duration: 1,
+    scrollTrigger: {
+      trigger: h2Ref.current,
+      start: "top bottom", // 保證一進 viewport 就觸發
+     // 加上 debug markers 看位置
+    }
+  })
+
+  // paragraphs 用 batch 處理
+  ScrollTrigger.batch(paragraphs.current, {
+    onEnter: batch => {
+      gsap.to(batch, {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        stagger: 0.2,
+        overwrite: true
+      })
+    },
+    start: "top 90%"
+  })
+
+  return () => {
+    tl.kill()
+    ScrollTrigger.getAll()?.forEach(trigger => trigger.kill())
+  }
+}, [])
+
+useEffect(() => {
+  AOS.init({
+    duration: 1200,
+  });
+}, []);
+
 
   return (
   <>
  <Header handleColor={handleColor} secondsElapsed={secondsElapsed} flipped={flipped}/>
-  <main className="flex max-x-7xl flex-col items-center justify-center min-h-screen bg-accent ">
+  <main className="flex max-x-7xl flex-col items-center justify-center min-h-screen bg-accent " ref={pinSectionRef}>
     {/*banner*/}
     {/* <div className="bg-[url(/img/banner_3.JPG)] bg-cover bg-[position:80%_center] w-full min-h-[844px] md:bg-center"> */}
-      <div className="max-w-7xl mx-auto min-h-screen px-6 pb-10 py-[40px] ">  
-          <div className='text-center flex flex-col justify-center items-center pt-[400px] md:items-start md:justify-end md:text-left'>
-          <h1 className="text-6xl font-bold text-primary leading-tight mb-6 hero">Your Hour, Your Way</h1>
-          <Stopwatch  secondsElapsed={secondsElapsed}/>
+      <div className="max-w-7xl mx-auto min-h-screen px-6 pb-10 pt-[350px]">  
+          <div className='text-center flex flex-col justify-center items-center  md:items-start md:justify-end md:text-left'>
+          <h1 className="text-6xl font-bold text-primary leading-tight mb-6 hero" ref={titleRef}>Your Hour, Your Way</h1>
+          <div ref={stopwatchRef} style={{ opacity: 0, transform: "translateX(-100px)" }}>
+          <Stopwatch  secondsElapsed={secondsElapsed} />
+          </div>
           </div>
     </div>
+
     {/* Section 1 */}
-    <div className="py-[90px] w-full px-2 flex flex-col items-center justify-center md:py-[150px]">
-      <h2 className=" text-5xl text-left font-semibold mb-4 text-primary p-4 md:text-6xl">What is Hora?</h2>
+    <div className="py-[100px] pt-10 w-full px-2 flex flex-col items-center justify-center md:py-[150px]">
+      <h2 className=" text-5xl text-left font-semibold mb-4 text-primary p-4 md:text-6xl " data-aos="fade-up-left">What is Hora?</h2>
       <div className="text-lg mb-8 max-w-2xl text-left space-y-3 mx-8 ">
-        <p className=" text-primary font-secondary ">Life’s busy. <br/>
+        <p className=" text-primary font-secondary " ref={el => paragraphs.current[0] = el}>Life’s busy. <br/>
           Get your time back. <br/>
           
           From errands to quiet company — it’s handled.</p>
 
-        <p  className=" text-primary  font-secondary ">Your day runs lighter.
+        <p  className=" text-primary  font-secondary " ref={el => paragraphs.current[1] = el}>Your day runs lighter.
           Your mind stays sharp. <br/>
           Life doesn’t slow down. Neither do you. 
           </p>
@@ -116,10 +235,10 @@ const [secondsElapsed, setSecondsElapsed] = useState(0);
       </a>
       </button>
     </div>
-    <div className="py-[32px] w-full mx-auto flex flex-col items-center justify-center bg-primary">
+    <div className="py-[90px] w-full mx-auto flex flex-col items-center justify-center bg-primary">
       <div className="flex flex-col items-start justify-center px-4 w-full md:items-center lg:items-start lg:px-0 max-w-7xl">
         <div className="pb-[64px] pt-8"> 
-          <h2 className="text-4xl text-accent md:text-6xl">Why Hora?</h2>
+          <h2 className="text-4xl text-accent md:text-6xl " data-aos="fade-up">Why Hora?</h2>
           <p className="text-lg text-accent max-w-2xl pt-4 font-secondary">
             Your time, your needs — matched with trust and ease.
           </p>
@@ -182,12 +301,12 @@ const [secondsElapsed, setSecondsElapsed] = useState(0);
         </div>
       </label>
     {/* Section requester */}
-    <div className= {`w-full mx-auto py-8 flex-col items-center justify-center lg:flex-row-reverse lg:py-4 ${isSupporter ? "hidden" : "flex"}`}>
+    <div className= {`w-full mx-auto pt-8 flex-col items-center justify-center lg:flex-row-reverse lg:py-4 ${isSupporter ? "hidden" : "flex"}`}>
       <div className=" max-w-3xl mx-auto px-6 pb-4 flex flex-col items-center justify-center">
         <h2 className="text-4xl  text-primary pb-10">How to Request Support</h2>
         {/* Step 1 */}
         <div className="flex flex-col w-full items-start pb-12">
-          <h2 className="text-[80px] font-semibold text-primary leading-none mb-4">01</h2>
+          <h2 className="text-[80px] font-semibold text-primary leading-none mb-4"  >01</h2>
           <h3 className="text-2xl  font-semibold text-primary mb-4"> Create your profile</h3>
           <p className="text-lg text-primary font-secondary max-w-lg">
             Join our verified network. Trust starts here.
@@ -195,10 +314,10 @@ const [secondsElapsed, setSecondsElapsed] = useState(0);
         </div>
 
         {/* Step 2 */}
-        <div className="flex flex-col w-full items-start lg:items-end pb-12">
+        <div className="flex flex-col w-full items-start pb-12">
           <h2 className="text-[80px] font-semibold text-primary leading-none mb-4">02</h2>
           <h3 className="text-2xl  font-semibold text-primary mb-4">Post your request</h3>
-          <p className="text-lg text-primary font-secondary max-w-lg lg:text-right">
+          <p className="text-lg text-primary font-secondary max-w-lg ">
             Define exactly what you need. We match you with top supporters.
           </p>
         </div>
@@ -212,7 +331,7 @@ const [secondsElapsed, setSecondsElapsed] = useState(0);
           </p>
         </div>
       </div>
-      <div className="bg-[url(/img/requester_1.png)] w-full h-[400px] bg-cover bg-top md:w-1/2 md:h-[700px] lg:m-8 lg:h-lvh transition-transform duration-500 hover:scale-105"/>
+      <div className="bg-[url(/img/requester_1.png)] w-full h-[300px] bg-cover bg-top md:w-1/2 md:h-[700px] lg:m-8 lg:h-lvh transition-transform duration-500 hover:scale-105"/>
 
     </div>
     {/* Section supporter */}
