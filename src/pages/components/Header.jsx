@@ -45,11 +45,11 @@ export default function Header({handleColor, showHeader=true, secondsElapsed,fli
               <Link to="/">Hora</Link>
             </div>
             <div className="back text-center flex flex-col justify-center items-center md:flex-row md:gap-4">
-                 <div className={`logo-flip font-secondary ${handleColor === 'bg-accent' ? 'text-primary !important' : 'text-accent !important'}`}>
+              <div className={`logo-flip font-secondary ${handleColor === 'bg-accent' ? 'text-primary !important' : 'text-accent !important'}`}>
                   {hours.toString().padStart(2,'0')}:
                   {minutes.toString().padStart(2,'0')}:
                   {seconds.toString().padStart(2,'0')}
-                </div>
+              </div>
                  <div className="dot hidden md:inline-block flex-shrink-0 mb-" ></div>
                 <div className={`logo-flip font-secondary ${handleColor === 'bg-accent' ? 'text-primary !important' : 'text-accent !important'}`}>
                   ${earned}

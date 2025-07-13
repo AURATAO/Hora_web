@@ -11,12 +11,31 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 
-export default function Mission() {
+export default function Mission( {secondsElapsed} ) {
    const lastScrollY = useRef(0);
    const [showHeader, setShowHeader] = useState(true);
    const [handleColor, setHandleColor] = useState('bg-accent');
    const [activeAnimated, setActiveAnimated] = useState(false);
    const timeoutId = useRef(null);
+
+   const hours = Math.floor(secondsElapsed / 3600);
+   const minutes = Math.floor((secondsElapsed % 3600) / 60);
+   const seconds = secondsElapsed % 60;
+   const earned = (secondsElapsed * (16.50/3600)).toFixed(4);
+   const [flipped, setFlipped] = useState(false);
+
+   useEffect(() => {
+       const observer = new IntersectionObserver(
+         ([entry]) => {
+           setFlipped(!entry.isIntersecting);
+         },
+         { threshold: 0.1 }
+       );
+       const hero = document.querySelector('.hero');
+       if (hero) observer.observe(hero);
+       return () => observer.disconnect();
+     }, []);
+            
 
 
    useEffect(() => {
@@ -114,33 +133,50 @@ export default function Mission() {
 
   return (
     <>
-      <Header showHeader={showHeader} handleColor={handleColor}  />
-      <main className="bg-accent/30 md:pt-[72px]">
-        <div className="max-w-7xl mx-auto ">
-          <div className="flex flex-col justify-center  items-center mx-8  lg:max-w-7xl  " >
-            <div data-aos="fade-left" className="lg:pr-[500px]">
-            <FakeIphone />
+      <Header showHeader={showHeader} handleColor={handleColor}  flipped={flipped} />
+      <main className="bg-accent/30  w-full md:pt-[72px]">
+        <div className="max-w-7xl mx-auto w-full">
+          <div className="flex flex-col justify-center  items-center mx-8  " >
+            <div className="w-full flex flex-col justify-center items-center lg:flex-row lg:justify-between lg:px-[72px]">
+               <div data-aos="fade-left" className="flex justify-center items-center">
+                  <div className="relative flex justify-center items-center pt-[60px] lg:pt-0">
+                    <div className="relative rounded-[40px]">
+                      {/* 綠灰科技光暈 */}
+                      <div className="absolute inset-0 rounded-[40px] bg-emerald-400 opacity-10 blur-3xl"></div>
+                      
+                      {/* 外層額外光圈，增強數位感 */}
+                      <div className="absolute inset-0 rounded-[40px] border border-emerald-400/10 shadow-[0_0_30px_#00ff9e22]"></div>
+
+                      {/* 手機本體 */}
+                      <div className="relative rounded-[40px] bg-gradient-to-br from-neutral-900 via-neutral-800 to-neutral-900 shadow-inner shadow-emerald-900/30 backdrop-blur-sm bg-black/20">
+                        <FakeIphone />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              <div className="pb-4 flex items-baseline space-x-2 font-secondary text-xl text-primary" data-aos="zoom-out-left">
+                <span>{hours.toString().padStart(2,'0')}:{minutes.toString().padStart(2,'0')}:{seconds.toString().padStart(2,'0')}</span>
+                <span className="text-sm text-primary/40">${earned} <span className="text-[10px]">at min wage</span></span>
+              </div>
             </div>
             <div className="lg:flex-col lg:justify-center lg:items-start lg:text-left"> 
-             <h1 className="text-primary  text-4xl text-center md:text-7xl  lg:text-center  font-semibold " data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500">Unlock the true value of time.</h1>
+             <h1 className="text-primary  text-5xl pt-4 text-center md:text-7xl  lg:text-center  font-semibold " data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500">Unlock the true value of time.</h1>
              <p className=" text-primary font-secondary  text-lg text-center pt-4 md:text-xl  lg:text-left lg:font-light  ">Delegate life’s small tasks, or turn spare hours into fair pay.</p>
             </div> 
           </div>
-          <div>
-          </div>
           {/*value*/}
-        <div className="grid grid-rows-2 gap-4 max-w-7xl pb-[64px] mx-8 pt-[200px]  md:mx-8 ">
+        <div className="grid grid-rows-2 gap-4 max-w-7xl pb-[64px] mx-8 pt-[200px]  md:mx-8 hero">
           <div className="py-4">
           <h4 className="text-base text-secondary lg:text-xl pb-2" >Hora Today</h4>
           <p className="text-primary font-secondary text-2xl font-semibold  lg:text-5xl md:w-3/4" data-aos="zoom-in-right">We build simple, meaningful connections, so your time stays yours.</p>
           </div>
           <div className="py-4 flex" >
-            <p className="text-primary font-secondary text-2xl font-semibold text-right  md:ml-auto md:w-3/4 lg:text-5xl lg:pt-10 " data-aos="zoom-out">Whether you want to free up your day or turn your time into earnings, we make it seamless. </p>
+            <p className="text-primary font-secondary text-2xl font-semibold text-right  md:ml-auto md:w-3/4 lg:text-5xl lg:pt-10 " data-aos="fade-up" >Whether you want to free up your day or turn your time into earnings, we make it seamless. </p>
           </div>
         </div>
         </div>
         {/*our value*/}
-        <div className="bg-primary w-full py-[40px]   ">
+        <div className="bg-primary w-full py-[40px] ">
           <div className="max-w-7xl mx-8 py-8 md:mx-auto">
             <h4 className="text-base text-secondary py-2 md:pl-8 lg:text-xl ">Our Values</h4>
             <p className="text-5xl text-accent   md:w-4/5  w-full  md:mx-auto lg:w-1/2 lg:mx-8" data-aos="fade-down" >Time. Trust. Fair. Simple.</p>

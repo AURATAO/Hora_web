@@ -12,19 +12,13 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 
-export default function Home() {
+export default function Home({ secondsElapsed } ) {
   const [handleColor, sethandleColor] = useState('bg-accent');
   const [activeAnimated, setActiveAnimated] = useState(false);
   const [isSupporter, setIsSupporter] = useState(false);
-  const [secondsElapsed, setSecondsElapsed] = useState(0);
+
   const [flipped, setFlipped] = useState(false);
-  
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setSecondsElapsed(prev => prev + 1);
-    }, 1000);
-    return () => clearInterval(interval);
-  }, []);
+
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -216,7 +210,7 @@ useEffect(() => {
 
     {/* Section 1 */}
     <div className="py-[100px] pt-10 w-full px-2 flex flex-col items-center justify-center md:py-[150px]">
-      <h2 className=" text-5xl text-left font-semibold mb-4 text-primary p-4 md:text-6xl " data-aos="fade-up-left">What is Hora?</h2>
+      <h2 className=" text-5xl text-left font-semibold mb-4 text-primary p-4 md:text-6xl " data-aos="fade-up">What is Hora?</h2>
       <div className="text-lg mb-8 max-w-2xl text-left space-y-3 mx-8 ">
         <p className=" text-primary font-secondary " ref={el => paragraphs.current[0] = el}>Life’s busy. <br/>
           Get your time back. <br/>
