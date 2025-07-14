@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import Header from "./components/Header";
 import Footer from "./components/Footer.jsx"
 import Logo_01 from './components/animated/Logo_01.jsx';
@@ -12,11 +12,9 @@ import 'aos/dist/aos.css';
 
 
 export default function Mission( {secondsElapsed} ) {
-   const lastScrollY = useRef(0);
-   const [showHeader, setShowHeader] = useState(true);
    const [handleColor, setHandleColor] = useState('bg-accent');
    const [activeAnimated, setActiveAnimated] = useState(false);
-   const timeoutId = useRef(null);
+ 
 
    const hours = Math.floor(secondsElapsed / 3600);
    const minutes = Math.floor((secondsElapsed % 3600) / 60);
@@ -37,36 +35,6 @@ export default function Mission( {secondsElapsed} ) {
      }, []);
             
 
-
-   useEffect(() => {
-    const handleScroll = () => {
-      const y = window.scrollY;
-
-      if (y <= 0) {
-        // 回到頂部，永遠顯示
-        setShowHeader(true);
-      } else if(y > lastScrollY.current || y < lastScrollY.current) {
-          // 向下滾動，隱藏
-          setShowHeader(false);
-      } 
-
-      // 清掉上一次的定時器
-      clearTimeout(timeoutId.current);
-
-      // 停止滾動 200ms 後顯示
-      timeoutId.current = setTimeout(() => {
-        setShowHeader(true);
-      }, 200);
-
-      lastScrollY.current = y;
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      clearTimeout(timeoutId.current);
-    };
-  }, []);
 
   useEffect(()=>{
            const handleScroll =()=>{
@@ -110,11 +78,6 @@ export default function Mission( {secondsElapsed} ) {
   useEffect(() => {
        console.log("activeAnimated changed:", activeAnimated);
      }, [activeAnimated]);
-
-  useEffect(() => {
-       console.log("activeAnimated changed:", activeAnimated);
-     }, [activeAnimated]);
-
      const [activeElement, setActiveElement] = useState("");
 
   const handleClick = (value) => {
@@ -133,7 +96,7 @@ export default function Mission( {secondsElapsed} ) {
 
   return (
     <>
-      <Header showHeader={showHeader} handleColor={handleColor}  flipped={flipped} />
+      <Header  handleColor={handleColor} secondsElapsed={secondsElapsed} flipped={flipped} />
       <main className="bg-accent/30  w-full md:pt-[72px]">
         <div className="max-w-7xl mx-auto w-full">
           <div className="flex flex-col justify-center  items-center mx-8  " >
@@ -154,9 +117,12 @@ export default function Mission( {secondsElapsed} ) {
                     </div>
                   </div>
                 </div>
-              <div className="pb-4 flex items-baseline space-x-2 font-secondary text-xl text-primary" data-aos="zoom-out-left">
+              <div className="flex flex-col justify-center items-center lg:items-start">
+              <div className="pb-4 flex items-baseline space-x-2 font-secondary text-xl text-primary " data-aos="zoom-out-left">
                 <span>{hours.toString().padStart(2,'0')}:{minutes.toString().padStart(2,'0')}:{seconds.toString().padStart(2,'0')}</span>
                 <span className="text-sm text-primary/40">${earned} <span className="text-[10px]">at min wage</span></span>
+              </div>
+                <a href="#" className="time-box">  Book Demo </a>
               </div>
             </div>
             <div className="lg:flex-col lg:justify-center lg:items-start lg:text-left"> 

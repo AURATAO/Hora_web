@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import {Download}from 'lucide-react';
 import 'hamburgers/dist/hamburgers.min.css';
 
-export default function Header({handleColor, showHeader=true, secondsElapsed,flipped }) {
+export default function Header({handleColor, secondsElapsed,flipped }) {
       const [isActive, setIsActive] = useState(false);
 
         const hours = Math.floor(secondsElapsed / 3600);
@@ -20,7 +20,7 @@ export default function Header({handleColor, showHeader=true, secondsElapsed,fli
       },[isActive])
     return (
         <>
-         <header className={` ${showHeader ? 'translate-y-0' : '-translate-y-full'} flex items-center justify-even px-3  h-[72px] w-full fixed shadow-[0_12px_22px_0_rgba(0,0,0,0.08)] z-40 ${handleColor}`} >
+         <header className={`flex items-center justify-even px-3 h-[72px] w-full fixed shadow-[0_12px_22px_0_rgba(0,0,0,0.08)] z-40 ${handleColor}`} >
             <div className="flex items-center justify-between w-full mx-auto lg:max-w-7xl">
             <nav className="flex space-x-5">
                 <div className='hidden lg:flex'  data-aos="fade-up" >
@@ -58,9 +58,9 @@ export default function Header({handleColor, showHeader=true, secondsElapsed,fli
             </div>
           
             <button className='flex justify-center items-center button-tech-sm md:button-tech 'data-aos="fade-up"
-     data-aos-anchor-placement="bottom-center" >
+             data-aos-anchor-placement="bottom-center" >
             <a href="/mission" className=" ">
-                Download
+                Book Demo
             </a>
                 <Download className='hidden' size={15}/>
             </button>
