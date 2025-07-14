@@ -1,3 +1,8 @@
+.header-fix {
+  position: fixed;
+  width: 100vw;
+}
+
 .hamburger-light .hamburger-inner,
 .hamburger-light .hamburger-inner::before,
 .hamburger-light .hamburger-inner::after {

@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
-import {Download}from 'lucide-react';
 import 'hamburgers/dist/hamburgers.min.css';
 
-export default function Header({handleColor, secondsElapsed,flipped }) {
+export default function Header({handleColor, secondsElapsed, flipped, onDemoClick }) {
       const [isActive, setIsActive] = useState(false);
 
         const hours = Math.floor(secondsElapsed / 3600);
@@ -20,8 +19,8 @@ export default function Header({handleColor, secondsElapsed,flipped }) {
       },[isActive])
     return (
         <>
-         <header className={`flex items-center justify-even px-3 h-[72px] w-full fixed shadow-[0_12px_22px_0_rgba(0,0,0,0.08)] z-40 ${handleColor}`} >
-            <div className="flex items-center justify-between w-full mx-auto lg:max-w-7xl">
+         <header className={` flex items-center justify-even px-3 h-[72px] w-full fixed shadow-[0_12px_22px_0_rgba(0,0,0,0.08)] z-40 ${handleColor} header-fix`} >
+            <div className="flex items-center justify-between w-full mx-auto lg:max-w-7xl ">
             <nav className="flex space-x-5">
                 <div className='hidden lg:flex'  data-aos="fade-up" >
                     <Link to="/mission" className={`${handleColor === 'bg-accent' ? 'text-primary' : 'text-accent'} text-xl font-light hover:text-gray-500`}>Mission</Link>
@@ -58,11 +57,8 @@ export default function Header({handleColor, secondsElapsed,flipped }) {
             </div>
           
             <button className='flex justify-center items-center button-tech-sm md:button-tech 'data-aos="fade-up"
-             data-aos-anchor-placement="bottom-center" >
-            <a href="/mission" className=" ">
+             data-aos-anchor-placement="bottom-center" onClick={onDemoClick} >
                 Book Demo
-            </a>
-                <Download className='hidden' size={15}/>
             </button>
             </div>
         </header>

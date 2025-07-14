@@ -5,6 +5,7 @@ import Logo_02 from './components/animated/Logo_02.jsx';
 import Logo_03 from './components/animated/Logo_03.jsx';
 import Header from './components/Header.jsx';
 import Footer from './components/Footer.jsx';
+import DemoModal from './components/DemoModal.jsx';
 import Stopwatch from '../pages/components/Stopwatch.jsx';
 import Iphone_01 from './components/Iphone_01.jsx';
 import gsap from 'gsap'
@@ -13,12 +14,13 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 
-export default function Home({ secondsElapsed } ) {
+export default function Home({ secondsElapsed  } ) {
   const [handleColor, sethandleColor] = useState('bg-accent');
   const [activeAnimated, setActiveAnimated] = useState(false);
   const [isSupporter, setIsSupporter] = useState(false);
-
   const [flipped, setFlipped] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+ 
 
 
   useEffect(() => {
@@ -196,7 +198,7 @@ useEffect(() => {
 
   return (
   <>
- <Header handleColor={handleColor} secondsElapsed={secondsElapsed} flipped={flipped}/>
+ <Header handleColor={handleColor} secondsElapsed={secondsElapsed} flipped={flipped} onDemoClick={() => setShowModal(true)}/>
   <main className="flex max-x-7xl flex-col items-center justify-center min-h-screen bg-accent " ref={pinSectionRef}>
     {/*banner*/}
     {/* <div className="bg-[url(/img/banner_3.JPG)] bg-cover bg-[position:80%_center] w-full min-h-[844px] md:bg-center"> */}
@@ -208,6 +210,7 @@ useEffect(() => {
           </div>
           </div>
     </div>
+    <DemoModal show={showModal} onClose={() => setShowModal(false)} />
 
     {/* Section 1 */}
     <div className="py-[100px] pt-10 w-full px-2 flex flex-col items-center justify-center md:py-[150px]">
@@ -367,12 +370,12 @@ useEffect(() => {
     {/*team*/}
     <div className='bg-primary w-full py-[90px]'>
       <div className='max-w-7xl mx-auto px-10'>
-      <div class="flex items-center gap-4 px-30">
-          <div class="flex-1 h-px bg-gray-300 "></div>
-          <div class="text-base font-semibold tracking-widest uppercase text-gray-600" data-aos="fade-up">
+      <div className="flex items-center gap-4 px-30">
+          <div className="flex-1 h-px bg-gray-300 "></div>
+          <div className="text-base font-semibold tracking-widest uppercase text-gray-600" data-aos="fade-up">
             Team
           </div>
-          <div class="flex-1 h-px bg-gray-300"></div>
+          <div className="flex-1 h-px bg-gray-300"></div>
         </div>
       <div className="flex flex-col md:flex-row justify-center items-center gap-30 p-6">
       {/* Founder 1 */}

@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import Mission from "./pages/Mission";
 import Terms from "./pages/Terms";
 import Privacy from "./pages/Privacy";
+
 import { useEffect, useState } from "react";
 
 
@@ -22,7 +23,7 @@ const [secondsElapsed, setSecondsElapsed] = useState(0);
       <BrowserRouter>
        <ScrollToTop />
         <Routes>
-          <Route path="/" element={<Home secondsElapsed={secondsElapsed} />} />
+          <Route path="/" element={<Home secondsElapsed={secondsElapsed}  />} />
           <Route path="/mission" element={<Mission secondsElapsed={secondsElapsed}/>} />
           <Route path="/terms" element={<Terms />}/>
           <Route path='/privacy' element={<Privacy/>}/>
