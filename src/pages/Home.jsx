@@ -231,8 +231,8 @@ useEffect(() => {
     </div>
     <div className="py-[90px] w-full mx-auto flex flex-col items-center justify-center bg-primary">
       <div className="flex flex-col items-start justify-center px-4 w-full md:items-center lg:items-start lg:px-0 max-w-7xl">
-        <div className="pb-[64px] pt-8"> 
-          <h2 className="text-4xl text-accent md:text-6xl " data-aos="fade-up">Why Hora?</h2>
+        <div className="pb-[64px] mx-4  pt-8"> 
+          <h2 className="text-4xl text-accent md:text-6xl  " data-aos="fade-up">Why Hora?</h2>
           <p className="text-lg text-accent max-w-2xl pt-4 font-secondary">
             Your time, your needs — matched with trust and ease.
           </p>
@@ -362,8 +362,56 @@ useEffect(() => {
       <div className=" bg-[url(/img/supporter_1.png)] w-full h-[400px] bg-cover bg-top md:h-[700px] lg:h-lvh lg:m-8 transition-transform duration-500 hover:scale-105 " />
     </div>
     </div>
-    {/* Section 3 */}
-    <div className=' w-full mx-auto flex flex-col items-center justify-center bg-neutralbg'>
+    {/*team*/}
+    <div className='bg-primary w-full py-[90px]'>
+      <div className='max-w-7xl mx-auto px-10'>
+      <div class="flex items-center gap-4 px-30">
+          <div class="flex-1 h-px bg-gray-300 "></div>
+          <div class="text-base font-semibold tracking-widest uppercase text-gray-600" data-aos="fade-up">
+            Team
+          </div>
+          <div class="flex-1 h-px bg-gray-300"></div>
+        </div>
+      <div className="flex flex-col md:flex-row justify-center items-center gap-30 p-6">
+      {/* Founder 1 */}
+      <div className="flex flex-col items-center">
+        <img
+          src="/img/founder1.JPG"
+          alt="Anna"
+          className="w-32 h-32 rounded-full object-cover transition-transform duration-300 hover:scale-110 mb-4  filter grayscale"
+        />
+        <h3 className="text-sm  text-accent/50 ">co-Founder</h3>
+        <h3 className="text-xl text-accent" data-aos="fade-left" >Liang you</h3>
+        <div className="flex gap-2 mt-2">
+          <a href="https://www.linkedin.com/in/liang-you-tao-658705106/" target="_blank" rel="noopener noreferrer" className='text-accent/30 text-sm'>
+            Linkedin
+          </a>
+          <a href="https://github.com/AURATAO" target="_blank" rel="noopener noreferrer" className='text-accent/30  text-sm'>
+            github
+          </a>
+        </div>
+      </div>
+
+      {/* Founder 2 */}
+      <div className="flex flex-col items-center">
+        <img
+          src="/img/founder2.jpg"
+          alt="Leo"
+          className="w-32 h-32 rounded-full object-cover object-left-bottom mb-4 transition-transform duration-300 hover:scale-110  filter grayscale"
+        />
+         <h3 className="text-sm  text-accent/50 ">co-Founder</h3>
+        <h3 className="text-xl text-accent" data-aos="fade-left">Daniele</h3>
+        <div className="flex gap-4 mt-2">
+          <a href="https://linkedin.com/in/leo" target="_blank" rel="noopener noreferrer" className='text-accent/30  text-sm'>
+            Linkedin
+          </a>
+        </div>
+      </div>
+      </div>
+      </div>
+    </div>
+    {/* Section 3 未來補上 */}
+    {/* <div className=' w-full mx-auto flex flex-col items-center justify-center bg-neutralbg'>
     <div className="py-[32px] w-full mx-auto max-w-7xl flex flex-wrap items-center justify-center gap-x-32 ">
       <img src="/img/logo/Forbes.png" alt="Forbes" className="w-24 opacity-60"/>
       <img src="/img/logo/Stripe.png" alt="Stripe" className="w-24 opacity-60"/>
@@ -371,14 +419,14 @@ useEffect(() => {
       <img src="/img/logo/Vogue.png" alt="Vogue" className="w-24 opacity-60"/>
       <img src="/img/logo/Forbes.png" alt="Forbes" className="w-24 opacity-60"/>
     </div>
-    </div>
-    {/* Section 4 */}
-    <div className='w-full mx-auto flex flex-col items-center justify-center bg-primary py-[32px]'>
+    </div> */}
+    {/* Section 4 未來補上*/}
+    {/* <div className='w-full mx-auto flex flex-col items-center justify-center bg-primary py-[32px]'>
     <div className="w-full mx-auto max-w-7xl flex flex-col items-start justify-center gap-24">
     <p className='text-secondary text-xl pt-8 mx-3'>What our users say</p>
     <TestimonialsSlider />
   </div>
-    </div>
+    </div> */}
     {/* Section 5 */}
     <div className='w-full h-[300px] mx-auto flex flex-col items-center justify-center bg-[url(/img/section_5_1.JPG)] bg-cover bg-center  bg-no-repeat py-[64px]'/>
 

@@ -37,9 +37,7 @@ export default function Footer() {
                 <div className='pt-5 w-full md:w-1/3 '>
                     <ul className='flex flex-col items-start justify-start gap-4'>
                     <li className='text-accent/30 text-lg' data-aos="fade-down"> Resources</li>
-                    <li className='text-accent hover:text-secondary text-sm'> <Link to="">Safe Matching Tips</Link></li>
                     <li className='text-accent hover:text-secondary text-sm'> <Link to="">FAQ</Link></li>
-                    <li className='text-accent hover:text-secondary text-sm'><Link to="">Trust & Safety</Link></li>
                     <li className='text-accent hover:text-secondary text-sm'> <Link to="">Partner with Hora </Link></li>
                     <li className='text-accent hover:text-secondary text-sm'> <Link to="">Press Resourcea</Link> </li>
                     </ul>
@@ -48,10 +46,7 @@ export default function Footer() {
                     <ul className='flex flex-col items-start justify-start gap-4'>
                     <li className='text-accent/30 text-lg' data-aos="fade-down">Legal</li>
                     <li className='text-accent hover:text-secondary text-sm'><Link to="/terms">Terms</Link></li>
-                    <li className='text-accent hover:text-secondary text-sm'><Link to="/privacy">Privacy</Link></li>
-                    <li className='text-accent hover:text-secondary text-sm'><Link to="/">Coookie Policy</Link></li>
-                    <li className='text-accent hover:text-secondary text-sm'><Link to="/">Do Not Sell My Personal Information</Link></li>
-                    </ul>
+                    <li className='text-accent hover:text-secondary text-sm'><Link to="/privacy">Privacy</Link></li>                    </ul>
                 </div>
                 </div>
                 <div className='pt-10 w-full text-center lg:hidden'>
