@@ -6,6 +6,7 @@ import Logo_03 from './components/animated/Logo_03.jsx';
 import Header from './components/Header.jsx';
 import Footer from './components/Footer.jsx';
 import Stopwatch from '../pages/components/Stopwatch.jsx';
+import Iphone_01 from './components/Iphone_01.jsx';
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import AOS from 'aos';
@@ -282,7 +283,7 @@ useEffect(() => {
       </div>
     </div>
     {/* Section 2 */}
-    <div className=" bg-accent w-full mx-auto flex flex-col items-center justify-center max-w-7xl">
+    <div className=" bg-accent w-full mx-auto flex flex-col items-center justify-center max-w-7xl py-[90px]">
       <label className="label flex self-end pt-5 mx-5" >
         <div className="toggle" >
           <input className="toggle-state" type="checkbox" name="check" value="check" checked={isSupporter}  onChange={() => setIsSupporter(!isSupporter)}/>
@@ -325,8 +326,8 @@ useEffect(() => {
           </p>
         </div>
       </div>
-      <div className="bg-[url(/img/requester_1.png)] w-full h-[300px] bg-cover bg-top md:w-1/2 md:h-[700px] lg:m-8 lg:h-lvh transition-transform duration-500 hover:scale-105"/>
-
+      {/* <div className="bg-[url(/img/requester_1.png)] w-full h-[300px] bg-cover bg-top md:w-1/2 md:h-[700px] lg:m-8 lg:h-lvh transition-transform duration-500 hover:scale-105"/> */}
+      <div className='w-full md:w-1/2' ><Iphone_01/></div>
     </div>
     {/* Section supporter */}
     <div className={`w-full mx-auto pt-4 flex-col items-center justify-center lg:flex-row lg:p-4 ${isSupporter ? "flex" : "hidden"}`}>
@@ -359,7 +360,8 @@ useEffect(() => {
           </p>
         </div>
       </div>
-      <div className=" bg-[url(/img/supporter_1.png)] w-full h-[400px] bg-cover bg-top md:h-[700px] lg:h-lvh lg:m-8 transition-transform duration-500 hover:scale-105 " />
+      {/* <div className=" bg-[url(/img/supporter_1.png)] w-full h-[400px] bg-cover bg-top md:h-[700px] lg:h-lvh lg:m-8 transition-transform duration-500 hover:scale-105 " /> */}
+      <div className='w-full md:w-1/2'><img src="/img/Group1.png" alt="" className='w-[300px]'/></div>
     </div>
     </div>
     {/*team*/}
