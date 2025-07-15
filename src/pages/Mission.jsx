@@ -7,7 +7,6 @@ import Logo_02 from './components/animated/Logo_02.jsx';
 import Logo_03 from './components/animated/Logo_03.jsx';
 import { TECollapse } from "tw-elements-react";
 import FakeIphone from "./components/FakeIphone.jsx";
-import Stopwatch from '../pages/components/Stopwatch.jsx';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
@@ -43,7 +42,7 @@ export default function Mission( {secondsElapsed } ) {
             const y = window.scrollY;
             const width = window.innerWidth;
                 console.log("scrollY:", y);
-               if (y> 1200) {
+               if (y > 264 ) {
                  console.log("Trigger animation!");
                  setActiveAnimated(true);
                }
@@ -51,22 +50,22 @@ export default function Mission( {secondsElapsed } ) {
                 //setHandleColor 
              if (width < 1024) {
               // 手機
-              if(y > 4360){
+              if(y > 3673){
                 setHandleColor('bg-primary');
-              } else if (y > 3660) {
+              } else if (y > 3122) {
                 setHandleColor('bg-accent');
-              } else if (y > 331){
+              } else if (y > 1284){
                 setHandleColor('bg-primary');
               }else {
-                setHandleColor('bg-accent/40');
+                setHandleColor('bg-accent');
               }
             } else {
               // 桌機
-              if(y > 3615 ){
+              if(y > 2796){
                 setHandleColor('bg-primary')
-              } else if (y > 2581) {
+              } else if (y > 2028) {
                 setHandleColor('bg-accent');
-              } else if (y > 1596) {
+              } else if (y > 1239) {
                 setHandleColor('bg-primary');
               } else {
                 setHandleColor('bg-accent');
@@ -99,9 +98,9 @@ export default function Mission( {secondsElapsed } ) {
   return (
     <>
     <Header handleColor={handleColor} secondsElapsed={secondsElapsed} flipped={flipped} onDemoClick={()=>setShowModal(true)}/>
-      <main className="bg-accent/30  w-full md:pt-[72px]">
+      <main className="bg-accent  w-full md:pt-[72px]">
         <div className="max-w-7xl mx-auto w-full">
-          <div className="flex flex-col justify-center  items-center mx-8  " >
+          <div className="flex flex-col justify-center  items-center mx-8 pt-8 " >
             <div className="w-full flex flex-col justify-center items-center lg:flex-row lg:justify-between lg:px-[72px]">
                <div data-aos="fade-left" className="flex justify-center items-center">
                   <div className="relative flex justify-center items-center pt-[60px] lg:pt-0">
@@ -145,7 +144,7 @@ export default function Mission( {secondsElapsed } ) {
         </div>
         </div>
         {/*our value*/}
-        <div className="bg-primary w-full py-[40px] ">
+        <div className="bg-primary w-full py-[80px] ">
           <div className="max-w-7xl mx-8 py-8 md:mx-auto">
             <h4 className="text-base text-secondary py-2 md:pl-8 lg:text-xl ">Our Values</h4>
             <p className="text-5xl text-accent   md:w-4/5  w-full  md:mx-auto lg:w-1/2 lg:mx-8" data-aos="fade-down" >Time. Trust. Fair. Simple.</p>
@@ -200,24 +199,23 @@ export default function Mission( {secondsElapsed } ) {
         </div>
         {/*our principle*/}
           <div className="max-w-7xl mx-auto relative h-full">
-              <div className="flex justify-between ">
+              <div className="relative flex justify-between ">
                   <div
                     className="h-full w-full overflow-hidden rounded transition-opacity duration-700"
                   >
                     <img
-                      src="/img/banner_1.jpg"
+                      src="/img/group3.png"
                       alt=""
-                      className="w-full h-[300px] md:h-[600px] object-cover lg:rounded-2xl lg:w-[700px] lg:h-[450px] lg:absolute lg:top-[-80px] lg:right-0 "
+                      className="absolute w-full object-cover lg:rounded-2xl lg:w-[700px]  lg:absolute lg:top-[-80px] lg:right-0 "
                     />
                   </div>
                 </div>
-                <div className="py-10 mx-8 lg:py-[108px] ">
+                <div className="absolute pt-[350px] sm:pt-[600px] mx-8 md:pt-[700px]  lg:py-[108px] ">
                   <h4 className="text-base text-secondary  md:pl-8 lg:text-xl ">Our Principle </h4>
-                  <p className="text-3xl text-primary font-secondary md:text-5xl md:w-4/5 md:mx-auto lg:w-1/3 lg:pt-8 lg:mx-8">How we operate, always.</p>
+                  <p className="text-3xl text-primary font-secondary md:text-5xl md:w-4/5 md:mx-auto lg:w-2/3 lg:pt-8 lg:mx-8">How we operate, always.</p>
                 </div> 
           </div>
-           <div className="relative w-full pb-[72px]">
-                  <div className="hidden pointer-events-none absolute right-0 top-0 bottom-0 w-90 bg-gradient-to-l from-white to-transparent z-10 lg:flex"></div>
+           <div className="relative w-full pb-[72px] pt-[500px] sm:pt-[800px] md:pt-[850px] lg:pt-[400px]">
                 <div className="flex justify-start items-start max-w-7xl mx-auto snap-x overflow-x-auto space-x-8 px-4 md:px-[64px] md:pt-[64px] scroll-container ">
                   <div className="snap-center shrink-0 w-[200px] flex flex-col justify-center items-start md:w-[300px]">
                     <h1 className="text-secondary/70 text-5xl pb-2 ">01</h1>

@@ -63,7 +63,7 @@ const handleClose = () => {
     return (
         <>
          <div className="fixed inset-0 z-50 flex items-center justify-center bg-[var(--color-primary)]/70 p-4">
-            <div className="relative bg-primary rounded-lg p-8 shadow-lg w-full max-w-md">
+            <div className="relative bg-primary  rounded-lg p-8  w-full max-w-md">
                 {/* X button */}
                 <button
                 onClick={handleClose}

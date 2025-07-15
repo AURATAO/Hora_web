@@ -27,9 +27,9 @@ export default function Footer() {
                     <li className='text-accent hover:text-secondary text-sm'><Link to="/mission">Mission</Link></li>
                     <li>
                         <ul className='flex items-center justify-center gap-2'>
-                        <li className='text-accent hover:text-secondary text-sm'><Link to="/">Contact</Link></li>
-                        <li className='text-accent hover:text-secondary text-sm'><Link to="/">ig</Link></li>
-                        <li className='text-accent hover:text-secondary text-sm'><Link to="/">linkedin</Link></li>
+                        <li className='text-accent hover:text-secondary text-sm'><Link to="/contact">Contact</Link></li>
+                        <li className='text-accent hover:text-secondary text-sm'><Link to="/"><img src="./img/logo/linkedin.svg" alt="linkedin logo" className="w-4 h-4 color-accent"/></Link></li>
+                        <li className='text-accent hover:text-secondary text-sm'><Link to="/"><img src="./img/logo/ig.svg" alt="linkedin logo" className="w-6 h-6 color-accent"/></Link></li>
                         </ul>
                     </li>
                     </ul>

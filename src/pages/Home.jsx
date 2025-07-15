@@ -14,6 +14,7 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 
+
 export default function Home({ secondsElapsed  } ) {
   const [handleColor, sethandleColor] = useState('bg-accent');
   const [activeAnimated, setActiveAnimated] = useState(false);
@@ -202,7 +203,7 @@ useEffect(() => {
   <main className="flex max-x-7xl flex-col items-center justify-center min-h-screen bg-accent " ref={pinSectionRef}>
     {/*banner*/}
     {/* <div className="bg-[url(/img/banner_3.JPG)] bg-cover bg-[position:80%_center] w-full min-h-[844px] md:bg-center"> */}
-      <div className="max-w-7xl mx-auto min-h-screen px-6 pb-10 pt-[350px]">  
+      <div className="max-w-7xl mx-auto min-h-screen px-6 pb-10 pt-[250px] lg:pt-[350px]">  
           <div className='text-center flex flex-col justify-center items-center  md:items-start md:justify-end md:text-left'>
           <h1 className="text-6xl font-bold text-primary leading-tight mb-6 hero" ref={titleRef}>Your Hour, Your Way</h1>
           <div ref={stopwatchRef} style={{ opacity: 0, transform: "translateX(-100px)" }}>
@@ -286,20 +287,20 @@ useEffect(() => {
       </div>
     </div>
     {/* Section 2 */}
-    <div className=" bg-accent w-full mx-auto flex flex-col items-center justify-center max-w-7xl py-[90px]">
+    <div className=" bg-accent w-full mx-auto flex flex-col items-center justify-center max-w-7xl py-[200px] md:py-[150px] lg:py-[90px]">
       <label className="label flex self-end pt-5 mx-5" >
         <div className="toggle" >
           <input className="toggle-state" type="checkbox" name="check" value="check" checked={isSupporter}  onChange={() => setIsSupporter(!isSupporter)}/>
            <div className="labels" >
-              <span className="icon-left text-sm text-primary/30">Requester</span>
-              <span className="icon-right text-sm text-primary/30">Supporter</span>
+              <span className="icon-left text-sm text-primary/30">Supporter</span>
+              <span className="icon-right text-sm text-primary/30">Requester</span>
             </div>
           <div className="indicator">
           </div>
         </div>
       </label>
-    {/* Section requester */}
-    <div className= {`w-full mx-auto pt-8 flex-col items-center justify-center lg:flex-row-reverse lg:py-4 ${isSupporter ? "hidden" : "flex"}`}>
+       {/* Section requester */}
+    <div className= {`w-full mx-auto pt-8 flex-col items-center justify-center lg:flex-row-reverse lg:py-4 ${isSupporter ? "flex":"hidden"}`}>
       <div className=" max-w-3xl mx-auto px-6 pb-4 flex flex-col items-center justify-center">
         <h2 className="text-4xl  text-primary pb-10">How to Request Support</h2>
         {/* Step 1 */}
@@ -330,19 +331,23 @@ useEffect(() => {
         </div>
       </div>
       {/* <div className="bg-[url(/img/requester_1.png)] w-full h-[300px] bg-cover bg-top md:w-1/2 md:h-[700px] lg:m-8 lg:h-lvh transition-transform duration-500 hover:scale-105"/> */}
-      <div className='w-full md:w-1/2' ><Iphone_01/></div>
+      <div className='w-full md:w-1/2'data-aos="fade-right" ><Iphone_01/></div>
     </div>
-    {/* Section supporter */}
-    <div className={`w-full mx-auto pt-4 flex-col items-center justify-center lg:flex-row lg:p-4 ${isSupporter ? "flex" : "hidden"}`}>
-      <div className="w-full max-w-7xl mx-auto px-6 pb-4 flex flex-col items-center justify-center ">
+       {/* Section supporter */}
+    <div className={`w-full mx-auto pt-4 flex-col items-center justify-center lg:p-4 ${isSupporter ? "hidden":"flex"}`}>
+      <div className="w-full max-w-7xl mx-auto px-6 pb-4 flex flex-col items-center justify-center  ">
         <h2 className="text-4xl text-primary pb-10">How to Become a Supporter</h2>
+        <div className='flex-col flex justify-center items-center lg:flex-row'>
+
+        <div className='flex flex-col items-center justify-center'>
         {/* Step 1 */}
-        <div className="flex flex-col items-start pb-12">
+        <div className="flex flex-col items-start pb-12 ">
           <h2 className="text-[80px] font-semibold text-primary leading-none mb-4">01</h2>
           <h3 className="text-2xl   font-semibold text-primary mb-4">Verify your profile</h3>
           <p className="text-lg text-primary font-secondary max-w-lg">
           Register and complete ID checks. Join a network built on trust and quality.
           </p>
+        </div>
         </div>
 
         {/* Step 2 */}
@@ -355,20 +360,66 @@ useEffect(() => {
         </div>
 
         {/* Step 3 */}
-        <div className="flex flex-col items-start pb-8">
+        <div className="flex flex-col items-start pb-12">
           <h2 className="text-[80px] font-semibold text-primary leading-none mb-4">03</h2>
           <h3 className="text-2xl font-semibold text-primary mb-4">Deliver and Earn</h3>
           <p className="text-lg text-primary  font-secondary max-w-lg">
             Complete tasks confidently. Turn free hours into secure earnings. 
           </p>
         </div>
+        </div>
       </div>
       {/* <div className=" bg-[url(/img/supporter_1.png)] w-full h-[400px] bg-cover bg-top md:h-[700px] lg:h-lvh lg:m-8 transition-transform duration-500 hover:scale-105 " /> */}
-      <div className='w-full md:w-1/2'><img src="/img/Group1.png" alt="" className='w-[300px]'/></div>
-    </div>
+       <div className="relative flex justify-center items-center py-12">
+          <div className='w-1/2'><div data-aos="fade-left" className="flex justify-center items-center">
+              <img src="/img/pinkIphone.png" alt="" style={{width:'700px'}}/>
+                  </div>
+          </div>
+          <div className="absolute top-6  left-12
+              flex items-center gap-3 
+              px-4 py-2  bg-white/30 backdrop-blur-md rounded-2xl shadow-lg w-64" data-aos="fade-up">
+            <span className="text-xl">✅</span>
+          <div className="flex flex-col">
+             <span className="text-xs font-semibold text-gray-700">Hora</span>
+              <span className="text-sm text-gray-900 leading-tight">Task matched successfully</span>
+           </div>
+        </div>
+                {/*note 2*/}
+                <div className="absolute top-20 left-12
+                    flex items-center gap-3 
+                    px-4 py-2
+                    bg-white/30 backdrop-blur-md
+                    rounded-2xl shadow-lg
+                    w-64
+                  " data-aos="fade-up">
+                  <span className="text-xl">🕒</span>
+                  <div className="flex flex-col">
+                    <span className="text-xs font-semibold text-gray-700">Hora</span>
+                    <span className="text-sm text-gray-900 leading-tight">Task checked in</span>
+                  </div>
+                </div>
+                {/*note 3*/}
+                <div className="absolute top-36 left-12
+                    flex items-center gap-3 
+                    px-4 py-2
+                    bg-white/30 backdrop-blur-md
+                    rounded-2xl shadow-lg
+                    w-64
+                  " data-aos="fade-up">
+                  <span className="text-xl">💸</span>
+                  <div className="flex flex-col">
+                    <span className="text-xs font-semibold text-gray-700">Hora</span>
+                    <span className="text-sm text-gray-900 leading-tight">Payment received</span>
+                  </div>
+                </div>
+
+         </div>
+         
+    </div> 
+   
     </div>
     {/*team*/}
-    <div className='bg-primary w-full py-[90px]'>
+    <div className='bg-primary w-full py-[90px] z-40 '>
       <div className='max-w-7xl mx-auto px-10'>
       <div className="flex items-center gap-4 px-30">
           <div className="flex-1 h-px bg-gray-300 "></div>
