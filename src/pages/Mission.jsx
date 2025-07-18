@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Header from "./components/Header";
 import Footer from "./components/Footer.jsx";
 import DemoModal from './components/DemoModal.jsx';
+import JoinModal from "./components/JoinModal.jsx";
 import Logo_01 from './components/animated/Logo_01.jsx';
 import Logo_02 from './components/animated/Logo_02.jsx';
 import Logo_03 from './components/animated/Logo_03.jsx';
@@ -15,6 +16,7 @@ export default function Mission( {secondsElapsed } ) {
    const [handleColor, setHandleColor] = useState('bg-accent');
    const [activeAnimated, setActiveAnimated] = useState(false);
    const [showModal, setShowModal] = useState(false);
+   const [showJoinModal, setShowJoinModal] = useState(null);
  
 
    const hours = Math.floor(secondsElapsed / 3600);
@@ -655,7 +657,57 @@ export default function Mission( {secondsElapsed } ) {
                   </div>
               </div>
             </div>
-         <div className='w-full h-[300px] mx-auto flex flex-col items-center justify-center bg-[url(/img/section_5_1.JPG)] bg-cotain bg-center bg-no-repeat py-[64px]'/>
+           {/*Section 3*/}
+             <div className="py-20 bg-primary w-full">
+                <div className=" flex-1 h-px bg-accent/30 mx-10 lg:mx-[200px] " data-aos="fade-down"
+                   data-aos-easing="linear" data-aos-duration="1500"></div>
+               <div className="max-w-6xl mx-auto px-4 text-center py-20">
+                 <h2 className="text-4xl font-semibold text-accent  mb-4"  data-aos="fade-up">Time, Reimagine.</h2>
+                 <p className="text-accent/70 font-secondary mb-12">
+                   Join our waitlist and be the first to experience Hora.
+                 </p>
+         
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
+                   {/* Supporter Card */}
+                   <div className="border border-[#E5E7EB] bg-white rounded-3xl p-8 shadow-md"  >
+                     <h3 className="text-xl font-semibold text-[#222831] mb-4">💚 Supporter</h3>
+                     <ul className="space-y-3 text-sm text-gray-700">
+                       <li><span className="font-medium text-secondary">Who:</span> Students, freelancers, part-timers</li>
+                       <li><span className="font-medium text-secondary">How to start:</span> Sign up + verify identity</li>
+                       <li><span className="font-medium text-secondary">Earn:</span> $30-60/hr</li>
+                       <li className="italic text-xs text-gray-500">“Hora fits perfectly between my studies and weekend gigs.”</li>
+                     </ul>
+                     <button
+                       className="mt-6 w-full py-2 rounded-lg bg-[#222831] text-white hover:bg-[#333f48] transition"
+                       onClick={() => setShowJoinModal('supporter')}
+                     >
+                       Become a supporter
+                     </button>
+                   </div>
+         
+                   {/* Requester Card */}
+                   <div className="border border-[#E5E7EB] bg-white rounded-3xl p-8 shadow-md" >
+                     <h3 className="text-xl font-semibold text-[#222831] mb-4">🤝 Requester</h3>
+                     <ul className="space-y-3 text-sm text-gray-700">
+                       <li><span className="font-medium text-secondary">Who:</span> Busy professionals, families, teams</li>
+                       <li><span className="font-medium text-secondary">How to start:</span> Quick Request or Schedule a task</li>
+                       <li><span className="font-medium text-secondary">Save time:</span> Up to 4 hrs per week</li>
+                       <li className="italic text-xs text-gray-500">“Posting a task takes less than 60 seconds. Love it.”</li>
+                     </ul>
+                     <button
+                       className="mt-6 w-full py-2 rounded-lg bg-[#A3C585] text-[#222831] hover:bg-[#91b76e] transition"
+                       onClick={() => setShowJoinModal('requester')}
+                     >
+                       Post a task
+                     </button>
+                   </div>
+                 </div>
+                  {showJoinModal && (
+                   <JoinModal role={showJoinModal} onClose={() => setShowJoinModal(null)} />
+                 )}
+               </div>
+             </div>
+          <div className='w-full h-[300px] mx-auto flex flex-col items-center justify-center bg-[url(/img/section_5_1.JPG)] bg-cotain bg-center bg-no-repeat py-[64px]'/>
 
       </main>
         <Footer/>

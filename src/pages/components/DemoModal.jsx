@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react"
 import { X } from 'lucide-react';
+import { Link } from "react-router-dom";
+
 
 export default function DemoModal({ show, onClose, }){
     const [company, setCompany] = useState('');
@@ -115,7 +117,7 @@ const handleClose = () => {
                     className="mr-2 accent-[var(--color-secondary)]"
                     />
                     <span className="text-accent text-sm">
-                    I have read and agree to the <a href="/privacy-policy" className="underline text-secondary)]">Privacy Policy</a> and <a href="/terms" className="underline text-[var(--color-secondary)]">Terms of Use</a>.
+                    I have read and agree to the <Link to="/privacy" className="underline text-secondary">Privacy Policy</Link> and <Link to="/terms" className="underline text-secondary">Terms of Use</Link>.
                     </span>
                 </div>
 

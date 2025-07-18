@@ -6,6 +6,7 @@ import Logo_03 from './components/animated/Logo_03.jsx';
 import Header from './components/Header.jsx';
 import Footer from './components/Footer.jsx';
 import DemoModal from './components/DemoModal.jsx';
+import JoinModal from "./components/JoinModal";
 import Stopwatch from '../pages/components/Stopwatch.jsx';
 import Iphone_01 from './components/Iphone_01.jsx';
 import gsap from 'gsap'
@@ -20,7 +21,8 @@ export default function Home({ secondsElapsed  } ) {
   const [activeAnimated, setActiveAnimated] = useState(false);
   const [isSupporter, setIsSupporter] = useState(false);
   const [flipped, setFlipped] = useState(false);
-  const [showModal, setShowModal] = useState(false);
+  const [showDemoModal, setShowDemoModal] = useState(false);
+  const [showJoinModal, setShowJoinModal]=useState(null);
  
 
 
@@ -199,7 +201,7 @@ useEffect(() => {
 
   return (
   <>
- <Header handleColor={handleColor} secondsElapsed={secondsElapsed} flipped={flipped} onDemoClick={() => setShowModal(true)}/>
+ <Header handleColor={handleColor} secondsElapsed={secondsElapsed} flipped={flipped} onDemoClick={() => setShowDemoModal(true)}/>
   <main className="flex max-x-7xl flex-col items-center justify-center min-h-screen bg-accent " ref={pinSectionRef}>
     {/*banner*/}
     {/* <div className="bg-[url(/img/banner_3.JPG)] bg-cover bg-[position:80%_center] w-full min-h-[844px] md:bg-center"> */}
@@ -211,7 +213,7 @@ useEffect(() => {
           </div>
           </div>
     </div>
-    <DemoModal show={showModal} onClose={() => setShowModal(false)} />
+    <DemoModal show={showDemoModal===true} onClose={() => setShowDemoModal(false)} />
 
     {/* Section 1 */}
     <div className="py-[100px] pt-10 w-full px-2 flex flex-col items-center justify-center md:py-[150px]">
@@ -287,8 +289,13 @@ useEffect(() => {
       </div>
     </div>
     {/* Section 2 */}
-    <div className=" bg-accent w-full mx-auto flex flex-col items-center justify-center max-w-7xl py-[200px] md:py-[150px] lg:py-[90px]">
-      <label className="label flex self-end pt-5 mx-5" >
+    <div className=" bg-accent w-full mx-auto flex flex-col items-center justify-center max-w-7xl py-[100px] md:py-[150px] lg:py-[90px]">
+      <div className='flex flex-col font-semibold justify-center items-center mx-4 w-full lg:flex-row lg:justify-between lg:py-8'>
+        <div className='flex flex-col justify-center items-center lg:items-start'>
+         <h1 className="text-5xl  text-primary pb-4">How to request a support</h1>
+         <h3 className="text-xl text-primary font-secondary pb-10">One app. Two ways to request Support — instant or pre-scheduled.</h3>
+        </div>
+      <label className="label flex  pt-5 mx-5 lg:pt-0" >
         <div className="toggle" >
           <input className="toggle-state" type="checkbox" name="check" value="check" checked={isSupporter}  onChange={() => setIsSupporter(!isSupporter)}/>
            <div className="labels" >
@@ -299,14 +306,16 @@ useEffect(() => {
           </div>
         </div>
       </label>
+      </div>
        {/* Section requester */}
     <div className= {`w-full mx-auto pt-8 flex-col items-center justify-center lg:flex-row-reverse lg:py-4 ${isSupporter ? "flex":"hidden"}`}>
       <div className=" max-w-3xl mx-auto px-6 pb-4 flex flex-col items-center justify-center">
-        <h2 className="text-4xl  text-primary pb-10">How to Request Support</h2>
+        <h2 className="text-4xl text-primary pb-4 font-secondary font-semibold text-nowrap">Scheduled Post (Pick your Supporter)</h2>
+        <h3 className="text-xl  text-primary pb-10 font-secondary">Best for pre-planned needs/  — choose who to work with.</h3>
         {/* Step 1 */}
-        <div className="flex flex-col w-full items-start pb-12">
+        <div className="flex flex-col w-full items-start py-12">
           <h2 className="text-[80px] font-semibold text-primary leading-none mb-4"  >01</h2>
-          <h3 className="text-2xl  font-semibold text-primary mb-4"> Create your profile</h3>
+          <h3 className="text-2xl  font-semibold text-primary mb-4"> Create profile & verified</h3>
           <p className="text-lg text-primary font-secondary max-w-lg">
             Join our verified network. Trust starts here.
           </p>
@@ -315,7 +324,7 @@ useEffect(() => {
         {/* Step 2 */}
         <div className="flex flex-col w-full items-start pb-12">
           <h2 className="text-[80px] font-semibold text-primary leading-none mb-4">02</h2>
-          <h3 className="text-2xl  font-semibold text-primary mb-4">Post your request</h3>
+          <h3 className="text-2xl  font-semibold text-primary mb-4">Post a task & set time</h3>
           <p className="text-lg text-primary font-secondary max-w-lg ">
             Define exactly what you need. We match you with top supporters.
           </p>
@@ -324,7 +333,15 @@ useEffect(() => {
         {/* Step 3 */}
         <div className="flex flex-col w-full items-start pb-8">
           <h2 className="text-[80px] font-semibold text-primary leading-none mb-4">03</h2>
-          <h3 className="text-2xl  font-semibold text-primary mb-4">Review & pay</h3>
+          <h3 className="text-2xl  font-semibold text-primary mb-4">Chat, negotiate & agree</h3>
+          <p className="text-lg text-primary font-secondary max-w-lg">
+            Approve when satisfied. Pay seamlessly.
+          </p>
+        </div>
+        {/*step 4*/}
+        <div className="flex flex-col w-full items-start pb-8">
+          <h2 className="text-[80px] font-semibold text-primary leading-none mb-4">04</h2>
+          <h3 className="text-2xl  font-semibold text-primary mb-4">Track time & pay for minutes used</h3>
           <p className="text-lg text-primary font-secondary max-w-lg">
             Approve when satisfied. Pay seamlessly.
           </p>
@@ -336,24 +353,23 @@ useEffect(() => {
        {/* Section supporter */}
     <div className={`w-full mx-auto pt-4 flex-col items-center justify-center lg:p-4 ${isSupporter ? "hidden":"flex"}`}>
       <div className="w-full max-w-7xl mx-auto px-6 pb-4 flex flex-col items-center justify-center  ">
-        <h2 className="text-4xl text-primary pb-10">How to Become a Supporter</h2>
-        <div className='flex-col flex justify-center items-center lg:flex-row'>
-
+        <h2 className="text-4xl text-primary pb-4 font-secondary font-semibold">QuickRequest (Instant Match)</h2>
+        <h3 className="text-xl text-primary font-secondary pb-10"> Best for urgent tasks — platform auto-matches supporters nearby.</h3>
+        <div className='flex-col flex justify-center items-center lg:flex-row gap-8'>
         <div className='flex flex-col items-center justify-center'>
         {/* Step 1 */}
         <div className="flex flex-col items-start pb-12 ">
           <h2 className="text-[80px] font-semibold text-primary leading-none mb-4">01</h2>
-          <h3 className="text-2xl   font-semibold text-primary mb-4">Verify your profile</h3>
+          <h3 className="text-2xl   font-semibold text-primary mb-4">Create profile & verified</h3>
           <p className="text-lg text-primary font-secondary max-w-lg">
           Register and complete ID checks. Join a network built on trust and quality.
           </p>
         </div>
         </div>
-
         {/* Step 2 */}
         <div className="flex flex-col items-start pb-12">
           <h2 className="text-[80px] font-semibold text-primary leading-none mb-4">02</h2>
-          <h3 className="text-2xl  font-semibold text-primary mb-4">Select your tasks</h3>
+          <h3 className="text-2xl  font-semibold text-primary mb-4">Tap QuickRequest</h3>
           <p className="text-lg text-primary font-secondary max-w-lg ">
             Browse requests and choose engagements aligned with your time and expertise.
           </p>
@@ -362,7 +378,15 @@ useEffect(() => {
         {/* Step 3 */}
         <div className="flex flex-col items-start pb-12">
           <h2 className="text-[80px] font-semibold text-primary leading-none mb-4">03</h2>
-          <h3 className="text-2xl font-semibold text-primary mb-4">Deliver and Earn</h3>
+          <h3 className="text-2xl font-semibold text-primary mb-4"> Auto-match with nearby supporter</h3>
+          <p className="text-lg text-primary  font-secondary max-w-lg">
+            Complete tasks confidently. Turn free hours into secure earnings. 
+          </p>
+        </div>
+         {/* Step 4 */}
+        <div className="flex flex-col items-start pb-12">
+          <h2 className="text-[80px] font-semibold text-primary leading-none mb-4">04</h2>
+          <h3 className="text-2xl font-semibold text-primary mb-4"> Track time & pay for minutes used</h3>
           <p className="text-lg text-primary  font-secondary max-w-lg">
             Complete tasks confidently. Turn free hours into secure earnings. 
           </p>
@@ -418,6 +442,57 @@ useEffect(() => {
     </div> 
    
     </div>
+    {/*Section 3*/}
+    <div className="py-20 bg-accent w-full">
+      <div className="max-w-6xl mx-auto px-4 text-center">
+        <h2 className="text-4xl font-semibold text-primary  mb-4"  data-aos="fade-up">Who uses Hora?</h2>
+        <p className="text-primary/70 font-secondary mb-12">
+          Be among the first to try Hora — join our waitlist now.
+        </p>
+
+         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
+          {/* Supporter Card */}
+          <div className="border border-[#E5E7EB] bg-white rounded-3xl p-8 shadow-md"  data-aos="fade-right">
+            <h3 className="text-xl font-semibold text-[#222831] mb-4">💚 Supporter</h3>
+            <ul className="space-y-3 text-sm text-gray-700">
+              <li><span className="font-medium text-secondary">Who:</span> Students, freelancers, part-timers</li>
+              <li><span className="font-medium text-secondary">How to start:</span> Sign up + verify identity</li>
+              <li><span className="font-medium text-secondary">Earn:</span> $30-60/hr</li>
+              <li className="italic text-xs text-gray-500">“Hora fits perfectly between my studies and weekend gigs.”</li>
+            </ul>
+            <button
+              className="mt-6 w-full py-2 rounded-lg bg-[#222831] text-white hover:bg-[#333f48] transition"
+              onClick={() => setShowJoinModal('supporter')}
+            >
+              Become a supporter
+            </button>
+          </div>
+
+          {/* Requester Card */}
+          <div className="border border-[#E5E7EB] bg-white rounded-3xl p-8 shadow-md" data-aos="fade-left">
+            <h3 className="text-xl font-semibold text-[#222831] mb-4">🤝 Requester</h3>
+            <ul className="space-y-3 text-sm text-gray-700">
+              <li><span className="font-medium text-secondary">Who:</span> Busy professionals, families, teams</li>
+              <li><span className="font-medium text-secondary">How to start:</span> Quick Request or Schedule a task</li>
+              <li><span className="font-medium text-secondary">Save time:</span> Up to 4 hrs per week</li>
+              <li className="italic text-xs text-gray-500">“Posting a task takes less than 60 seconds. Love it.”</li>
+            </ul>
+            <button
+              className="mt-6 w-full py-2 rounded-lg bg-[#A3C585] text-[#222831] hover:bg-[#91b76e] transition"
+              onClick={() => setShowJoinModal('requester')}
+            >
+              Post a task
+            </button>
+          </div>
+        </div>
+         {showJoinModal && (
+          <JoinModal role={showJoinModal} onClose={() => setShowJoinModal(null)} />
+        )}
+      </div>
+    </div>
+
+
+
     {/*team*/}
     <div className='bg-primary w-full py-[90px] z-40 '>
       <div className='max-w-7xl mx-auto px-10'>
